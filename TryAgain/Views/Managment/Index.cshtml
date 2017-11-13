@@ -1,0 +1,42 @@
+﻿@model  IEnumerable<TryAgain.Models.Post>
+
+@{
+    ViewBag.Title = "Blog Posts";
+}
+
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+<h4>Blog Posts</h4>
+@foreach (var item in Model)
+{
+    <section>
+        <article class="blogPost">
+            <header>
+                <h5> @Html.ActionLink(@Html.DisplayFor(modelitem => item.Title).ToString(), "Index", "Blog", new { id = item.PostID }, new { id = item.PostID })</h5>
+                <p>
+                    <b> Posted on: </b> <time datetime=@Html.DisplayFor(modelitem => item.PostDate)>@Html.DisplayFor(modelitem => item.PostDate)</time>
+                   <b> by: </b>  @Html.DisplayFor(modelitem => item.Author) <b> website: </b> @Html.DisplayFor(modelitem => item.AuthorSiteAddr)  
+                    
+                    @if (item.Comments != null)
+                    {
+                        <a href="@Url.Action("Details", "Managment", new { id = item.PostID })">@Html.DisplayFor(modelitem => item.Comments.Count)  comments </a>
+                    }
+                    <br />
+                    <b> Rate: </b>  @Html.DisplayTextFor(modelitem => item.postRate)
+                </p>
+            </header>
+        </article>
+
+        <div class="button-row">
+            <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "Managment", new { id = item.PostID })'">Edit post</button>
+            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete","Managment", new { id = item.PostID })'">Delete post</button>
+            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Blog", new { id = item.PostID })'">View post </button>
+            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Details", "Managment", new { id = item.PostID })'">Manage comment</button>
+        </div>
+    </section>
+}
+
+<button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Create", "Managment", "create new post")'">Add a new post</button>

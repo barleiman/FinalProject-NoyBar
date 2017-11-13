@@ -1,0 +1,239 @@
+﻿ @using System.Web.Helpers;
+@using System.Runtime.Serialization
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<link href="@Url.Content("~/Content/charts.css")" rel="stylesheet" type="text/css" />
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+
+@{
+    var jss = new System.Web.Script.Serialization.JavaScriptSerializer();
+    var rateJson = jss.Serialize(ViewData["RateData"]);
+}
+
+<p id="demo"></p>
+
+<p id="barTitle"></p>
+<svg class="barChart"></svg>
+
+<br />
+<p id="LineTitle"></p>
+<div class="lineChart"></div>
+<!--<canvas ></canvas>   -->
+
+<script>
+
+
+    var Bardata =  @Html.Raw(Json.Encode(ViewData["RateData"]));
+    document.getElementById("demo").innerText = Bardata;
+    document.getElementById("barTitle").innerText = "The number of post according to the rate!!";
+
+
+    var w = 100, h = 150;
+
+    var chart = d3.select(".barChart")
+        .attr("class", "chart")
+        .attr("width", w * Bardata.length)
+        .attr("height", h);
+
+    var x = d3.scale.linear()
+        .domain([0, 1])
+        .range([0, w]);
+
+    var y = d3.scale.linear()
+        .domain([0, 50])
+        .rangeRound([0, h]); //rangeRound is used for antialiasing
+
+    // x and y are the lower-left position of the bar
+    // width is the width of the bar
+    // height is the height of the bar
+    // for crisp edges use -.5 (antialiasing)
+    chart.selectAll("rect")
+        .data(Bardata)
+        .enter().append("rect")
+        .attr("x", function (d, i) { return x(i) - .5; })
+        .attr("y", function (d) { return h - y(d) - .5; })
+        .attr("width", w)
+        .attr("height", function (d) { return y(d); })
+        .text(function (d) { return (d); });
+
+    // horizontal line for the x-axis
+    chart.append("line")
+        .attr("x1", 0)
+        .attr("x2", w * Bardata.length)
+        .attr("y1", h - .5)
+        .attr("y2", h - .5)
+        .style("stroke", "#fff");
+
+
+
+    document.getElementById("LineTitle").innerText = "The number of post according too NOY";
+   var Linedata =  @Html.Raw(Json.Encode(ViewData["LineData"]))
+
+        document.getElementById("demo").innerText = Linedata;
+
+
+    var Linesvg = d3.select("lineChart").append("svg")
+        .attr("width", w)
+        .attr("height", h)
+        width = +svg.attr("width"),
+        height = +svg.attr("height"),
+        radius = Math.min(width, height) / 2,
+        g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var color = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+    var pie = d3.pie()
+        .sort(null)
+        .value(function (d) { return d.value; });
+
+    var path = d3.arc()
+        .outerRadius(radius - 10)
+        .innerRadius(0);
+
+    var label = d3.arc()
+        .outerRadius(radius - 40)
+        .innerRadius(radius - 40);
+  //  Linesvg.data(Linedata);
+   
+        var arc = g.selectAll(".arc")
+            .data(pie(Linedata))
+            .enter().append("g")
+            .attr("class", "arc");
+
+        arc.append("path")
+            .attr("d", path)
+            .attr("fill", function (d) { return color(d.year); });
+
+        arc.append("text")
+            .attr("transform", function (d) { return "translate(" + label.centroid(d) + ")"; })
+            .attr("dy", "0.35em")
+            .text(function (d) { return d.value; });
+   
+
+
+
+    /*
+    var Linesvg = d3.select("lineChart").append("svg")
+        .attr("width", w)
+        .attr("height", h),
+        margin = { top: 20, right: 60, bottom: 30, left: 40 },
+        width = +svg.attr("width") - margin.left - margin.right,
+        height = +svg.attr("height") - margin.top - margin.bottom;
+
+    var parseTime = d3.timeParse("%Y")
+    bisectDate = d3.bisector(function (d) { return d.year; }).left;
+
+    var x = d3.scaleLinear().range([0, width]);
+    var y = d3.scaleTime().range([height, 0]);
+
+    var line = d3.line()
+        .x(function (d) { return x(d.value); })
+        .y(function (d) { return y(d.year); })
+        .curve(d3.curveStepAfter);
+
+    Linesvg.data(Linedata);
+    var g = Linesvg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+    y.domain(d3.extent(data, function (d) { return d.year; }).reverse());
+    x.domain([d3.min(data, function (d) { return d.value; }), d3.max(data, function (d) { return d.value; }) * 1.005]);
+
+    g.append("g")
+        .attr("class", "axis axis--x")
+        .attr("transform", "translate(0," + height + ")");
+
+    g.append("g")
+        .attr("class", "axis axis--y")
+        .call(d3.axisLeft(y))
+        .append("text")
+        .attr("class", "axis-title")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .attr("fill", "#5D6971")
+        .text("lol");
+
+    g.append("line")
+        .attr("class", "zero")
+        .attr("stroke-dasharray", "5,5")
+        .attr("x1", x(0))
+        .attr("y1", 0)
+        .attr("x2", x(0))
+        .attr("y2", height)
+        .attr("transform", "translate(30,0)");
+
+    g.append("path")
+        .datum(Linedata)
+        .attr("class", "line")
+        .attr("transform", "translate(30,0)")
+        .attr("d", line);
+
+    g.append("g")
+        .attr("class", "rects")
+        .selectAll("text")
+        .data(Linedata)
+        .enter()
+        .append("rect")
+        .attr("x", function (d) { return x(d.value); })
+        .attr("y", function (d) { return y(d.year); })
+        .attr("width", 35)
+        .attr("height", 20)
+        .attr("transform", "translate(15,-15)")
+        .style("fill", "#fff");
+
+    g.append("g")
+        .attr("class", "labels")
+        .selectAll("text")
+        .data(Linedata)
+        .enter()
+        .append("text")
+        .attr("class", "label")
+        .attr("x", function (d) { return x(d.value); })
+        .attr("y", function (d) { return y(d.year); })
+        .attr("text-anchor", "middle")
+        .attr("transform", "translate(30,0)")
+        .text(function (d) {
+            return d.value + "m";
+
+            });
+
+    */
+
+
+
+  /*  var vertical = d3.select(".lineChart")
+        .append("div")
+        .attr("class", "remove")
+        .data(Linedata)
+        .style("position", "absolute")
+        .style("z-index", "19")
+        .style("width", "1px")
+        .style("height", "380px")
+        .style("top", "10px")
+        .style("bottom", "30px")
+        .style("left", "0px")
+        .style("background", "#fff");
+
+    d3.select(".lineChart")
+        .on("mousemove", function () {
+            mousex = d3.mouse(this);
+            mousex = mousex[0] + 5;
+            vertical.style("left", mousex + "px")
+        })
+        .on("mouseover", function () {
+            mousex = d3.mouse(this);
+            mousex = mousex[0] + 5;
+            vertical.style("left", mousex + "px")
+        });
+    */
+</script>

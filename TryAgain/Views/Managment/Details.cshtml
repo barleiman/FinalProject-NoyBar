@@ -1,0 +1,45 @@
+﻿@model  IEnumerable<TryAgain.Models.Comment>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+<div>
+    <hr />
+    @foreach (var item in Model)
+    {
+        <article class="blogComment">
+            <header>
+                <h5> @Html.ActionLink(@Html.DisplayFor(modelitem => item.Title).ToString(), "Details", "Blog", new { id = item.CommentID }, new { id = item.CommentID })</h5>
+                <p>
+                    <b> Comment on: </b> <time datetime=@Html.DisplayFor(modelitem => item.CommentDate)>@Html.DisplayFor(modelitem => item.CommentDate)</time>
+                    <b> by: </b>  @Html.DisplayFor(modelitem => item.Commenter) <b> website: </b> @Html.DisplayFor(modelitem => item.CommenterSiteAddr) 
+                    <br />
+                    <b> Rating : </b> @Html.DisplayFor(modelitem => item.givenRate)
+                    <b>  on </b>@Html.ActionLink("this", "Index", "Blog", new { id = item.PostID }) <b >post</b>
+                </p>
+            </header>
+            <div class="post_body">
+                <p>@Html.DisplayFor(model => item.Text)</p>
+            </div>
+        </article>
+
+        <div class="button-row">
+            <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "Blog", new { id = item.CommentID })'">Edit comment</button>
+            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete","Blog", new { id = item.CommentID })'">Delete comment</button>
+            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Details", "Blog", new { id = item.CommentID })'">View comment </button>
+        </div>
+    }
+
+</div>
+
+<div class="button-row">
+    <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Blog", new { id = Model.First().PostID })'">Go to post</button>
+    <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Managment")'">Back to List</button>
+</div>
+

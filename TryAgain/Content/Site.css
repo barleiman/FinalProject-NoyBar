@@ -1,0 +1,425 @@
+﻿
+
+/*205634645, 312497720*/
+
+/*------------------------------
+=BASIC SETUP
+------------------------------*/
+
+/* Makeshift CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Tell the browser to render HTML 5 elements as block */
+header, footer, section, aside, nav, article {
+    display: block;
+}
+
+.intro-music {
+    visibility: hidden;
+}
+
+body {
+    margin: 0 auto;
+    padding: 22px 0;
+    font: 13px/22px Helvetica, Arial, sans-serif;
+    background: #F0F0F0;
+    position: relative;
+}
+
+h1, h2 {
+    font-size: 28px;
+    line-height: 44px;
+    padding: 22px 0;
+}
+
+h3 {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 11px 0;
+}
+
+p {
+    padding-bottom: 22px;
+}
+
+.mainTitle {
+    text-shadow: 2px 2px #DDDDDD;
+}
+
+/*------------------------------
+=RSS  
+------------------------------*/
+.navbar-collapse div {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -ms-transition: all 2s ease-in-out;
+    transition: all 2s ease-in-out;
+}
+
+.navbar-collapse div:hover, .navbar-collapse div.hover_effect {
+    -webkit-transform: rotate(720deg) scale(2,2);
+    -moz-transform: rotate(720deg) scale(2,2);
+    -ms-transform: rotate(720deg) scale(2,2);
+    transform: rotate(720deg) scale(2,2);
+    }
+
+
+
+#content {
+    font-family: 'Drawingwithmarkers';
+    src: url('./Drawingwithmarkers.eot');
+    src: local('./Fonts'), url('./Drawingwithmarkers.woff') format('woff'), url('./Drawingwithmarkers.ttf') format('truetype');
+}
+
+/*------------------------------
+=NAVIGATION
+------------------------------*/
+
+nav {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: url("../images/nav_background.png");
+}
+
+nav ul {
+    margin: 0 auto;
+    width: 940px;
+    list-style: none;
+}
+
+nav ul li {
+    float: left;
+}
+
+
+
+nav ul li a {
+    display: block;
+    margin-right: 20px;
+    width: 140px;
+    font-size: 14px;
+    line-height: 44px;
+    text-align: center;
+    text-decoration: none;
+    color: #777;
+}
+
+    nav ul li a:hover {
+        color: #fff;
+    }
+
+nav ul li.nav navbar-nav a {
+    color: #fff;
+}
+
+nav ul li.subscribe a {
+    margin-left: 22px;
+    padding-left: 33px;
+    text-align: left;
+    background: url("../images/rss.png") left center no-repeat;
+}
+
+
+/*------------------------------
+=INTRODUCTION
+------------------------------*/
+
+#intro {
+    position: relative;
+    margin-top: 66px;
+    padding: 44px;
+
+    background: linear-gradient(0,#467612,#85b111,#b2db10);
+    /* Background-size not implemented yet */
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    -khtml-background-size: 100%;
+    /* Border-radius not implemented yet */
+    -moz-border-radius: 22px;
+    -webkit-border-radius: 22px;
+}
+
+    #intro h2, #intro p {
+        position: relative;
+        z-index: 9999;
+        width: 436px;
+    }
+
+    #intro h2 {
+        padding: 0 0 22px 0;
+        font-weight: normal;
+        color: #fff;
+    }
+
+    #intro p {
+        padding: 0;
+        color: #d9f499;
+    }
+
+    #intro img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 653px;
+        height: 100%;
+        /* Border-radius not implemented yet */
+        -moz-border-radius: 22px;
+        -webkit-border-radius: 22px;
+    }
+
+
+/*------------------------------
+=CONTENT AREA AND SIDEBAR LAYOUT
+------------------------------*/
+
+#mainContent {
+    display: table-cell;
+   /*padding-right: 22px;*/
+    width: 80%;
+}
+
+aside {
+    display: table-cell;
+    width: 20%;
+    background: url("../images/sidebar_background.png") top left;
+}
+
+
+/*
+.mdl-layout__container {
+    position: inherit;
+    /* width: 100%;
+    /* height: 100%; 
+}
+*/ 
+.page-content {
+    display: block;
+    width: inherit;
+    height: inherit;
+}
+/*------------------------------
+=SIDEBAR
+------------------------------*/
+aside section {
+    margin: 22px 0 0 22px;
+    padding: 11px 22px;
+    /*  THE 3 PART IN EXERCISE */
+    background: linear-gradient(0,#ebebeb,#e4e4e4,#dfdfdf);
+    /* Border-radius not implemented yet */
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+}
+
+/*------------------------------
+=BLOG POST
+------------------------------*/
+.blogPost header p, .blogPost header p a, .blogComment header p, .blogcomment header p a {
+    font-size: 14px;
+    font-style: italic;
+    color: #777;
+}
+
+    .blogPost header p a:hover, .blogcomment header p a:hover {
+        text-decoration: none;
+        color: #000;
+    }
+
+.blogPost div, .blogcomment div {
+    /* Column-count not implemented yet */
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    /* Column-gap not implemented yet */
+    -moz-column-gap: 22px;
+    -webkit-column-gap: 22px;
+}
+
+.blogPost img, .blogcomment img {
+    margin: 22px 0;
+    -webkit-box-shadow: 3px 3px 7px #777;
+}
+
+.blogPost video, .blogcomment video {
+    margin: 12px 0;
+    /*width: 100%;*/
+    height: auto;
+    -webkit-box-shadow: 3px 3px 7px #777;
+}
+
+/*------------------------------
+=COMMENTS
+------------------------------*/
+
+#comments {
+    margin-top: 21px;
+    padding-top: 22px;
+    border-top: 1px solid #d7d7d7;
+}
+
+#comments article {
+display: table;
+padding: 22px;
+}
+
+#comments article:nth-child(odd) {
+    padding: 21px;
+    background: #E3E3E3;
+    border: 1px solid #d7d7d7;
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+}
+
+#comments article header {
+            display: table-cell;
+            width: 220px;
+            padding-right: 22px;
+        }
+
+#comments article header a {
+                display: block;
+                font-weight: bold;
+                color: #000;
+            }
+
+#comments article header a:hover {
+    text-decoration: none;
+}
+
+#comments article p {
+            padding: 0;
+        }
+
+
+
+
+
+/*------------------------------
+=COMMENT FORM
+------------------------------*/
+form {
+    margin-top: 21px;
+    padding-top: 22px;
+    border-top: 1px solid #d7d7d7;
+}
+
+form p {
+    display: table;
+    margin-bottom: 22px;
+    padding: 0 22px;
+  }
+
+ form label {
+    display: table-cell;
+    width: 140px;
+    padding-right: 20px;
+    text-align: right;
+    font-weight: bold;
+vertical-align: top;
+    }
+
+#searchSample {
+    display: block;
+}
+
+    
+form input[type="text"], form input[type="email"], form input[type="url"] {
+        width: 300px;
+        height: 20px;
+    }
+
+form textarea {
+    width: 300px;
+    height: 100px;
+/*    border: 1px solid #d7d7d7;*/
+}
+
+form input[type="submit"] {
+    margin-left: 162px;
+    }
+
+
+
+/*------------------------------ 
+    =FOOTER
+------------------------------*/
+footer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: #222;
+}
+
+footer div {
+    display: table;
+    margin: 0 auto;
+    padding: 44px 0;
+    width: 940px;
+    color: #777;
+}
+
+footer div section {
+    display: table-cell;
+    width: 300px;
+}
+
+footer div #about, footer div #blogroll {
+    padding-right: 20px;
+}
+
+footer h3 {
+    color: #FFF;
+}
+
+footer a {
+    color: #999;
+}
+
+footer a:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+
+footer ul {
+    margin: 0 0 0 40px;
+    list-style: square;
+    color: #565656;
+    }
+
+footer ul li a {
+    display: block;
+}
+
+
+/*------------------------------ 
+    FAN TABLE  VIEW 
+    ------------------------------*/
+.fan_table th {
+    padding: 0 30px 0 0;
+}
+
+
+/*
+ views
+*/
+.obj_action_btn {
+    background-color: lawngreen;
+    color: black;
+    text-align: center;
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+.button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    color: black;
+}

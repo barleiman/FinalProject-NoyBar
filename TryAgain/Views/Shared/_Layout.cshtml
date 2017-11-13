@@ -1,0 +1,160 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Shauli Blog</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/Search.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Ha-Blog Shel Shauli</h1>
+    </header>
+
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            <nav>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Fans Club", "Index", "FansClub")</li>
+                    <li>@Html.ActionLink("Managment", "Index", "Managment")</li>
+                    <li>@Html.ActionLink("Blog", "Index", "Lead Posts")</li>
+                    <li>@Html.ActionLink("Statistics", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Index", "Home")</li>
+                    <li class="subscribe">
+                        <div class="hover">
+                            <a href="#">Subscribe via. RSS</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+
+    <!-- Introduction -->
+    <section id="intro">
+
+        <header>
+            <h3>Have fun in shauli's Fan Club</h3>
+        </header>
+        <p>The best Fans' blog of shauli fans in the world!!!</p>
+        <p>hello from: @Html.Raw(Json.Encode( ViewData["geoIP"]))</p>
+        <img src="../../images/intro_flower.png"  />
+    </section>
+
+
+    <!--The body content-->
+    <div class="body-content">
+
+        <!--The main render content-->
+        <div id="mainContent">
+            @RenderBody()
+
+        </div>
+        <!--the side options-->
+        <aside class="side_bar" >
+            <h4>   search   </h4>
+            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                <div class="mdl-tabs__tab-bar">
+                    <a href="#scroll-tab-1" class="mdl-tabs__tab is-active">Post</a>
+                    <a href="#scroll-tab-2" class="mdl-tabs__tab">Comment</a>
+                </div>
+
+                <div class="mdl-tabs__panel is-active" id="scroll-tab-1">
+                    <section>
+                        <form>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="searchSample">
+                                <label class="mdl-textfield__label" for="searchSample"> Post title</label>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="searchSample">
+                                <label class="mdl-textfield__label" for="searchSample">Post author</label>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="date" id="searchSample">
+                                <label class="mdl-textfield__label" for="searchSample"> Post date</label>
+                            </div>
+                            <br />
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <button class="mdl-button mdl-js-button" id="searchSample" onclick="serchPost()">
+                                    search
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+                <div class="mdl-tabs__panel" id="scroll-tab-2">
+                    <section>
+                        <form>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="searchSample">
+                                <label class="mdl-textfield__label" for="searchSample">Fan name</label>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="date" id="searchSample">
+                                <label class="mdl-textfield__label" for="searchSample">Birth date</label>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="number" id="searchSample">
+                                <label class="mdl-textfield__label" for="searchSample">Seniority</label>
+                            </div>
+                            <br />
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <button class="mdl-button mdl-js-button" id="searchSample" onclick="serchComment()">
+                                    search
+                                </button>
+
+                            </div>
+                        </form>
+                    </section>
+                </div>
+               
+            </div>
+        </aside>
+
+        <!-- Page footer -->
+        <footer>
+            <div>
+                <section id="about">
+                    <header>
+                        <h3>About</h3>
+                    </header>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut la</p>
+                </section>
+                <section id="blogroll">
+                    <header>
+                        <h3>Blogroll</h3>
+                    </header>
+                    <ul>
+                        <li><a href="#">NETTUTS+</a></li>
+                        <li><a href="#">FreelanceSwitch</a></li>
+                    </ul>
+                </section>
+                <section id="popular">
+                    <header>
+                        <h3>Popular</h3>
+                    </header>
+                    <ul>
+                        <li><a href="#">This is the title of a blog post</a></li>
+                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                        <li><a href="#">Consectetur adipisicing elit, sed do eiusmod</a></li>
+                    </ul>
+                </section>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
