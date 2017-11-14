@@ -77,5 +77,58 @@ namespace TryAgain.DAL
             return results; 
            
         }
+
+        public List<Post> FindPost(DateTime postDate, string TitleWord, string author)
+        {
+            List<Post> lstFoundPost = new List<Post>();
+            lstFoundPost = _posts.Where(ps => (ps.PostDate.CompareTo(postDate) >= 0) && (ps.Title.Contains(TitleWord)) &&
+                                              (ps.Author.Contains(author))).ToList();
+
+            return lstFoundPost;
+        }
+
+        public List<Post> FindPost(DateTime postDate, string TitleWord)
+        {
+            List<Post> lstFoundPost = new List<Post>();
+            lstFoundPost = _posts.Where(ps => (ps.PostDate.CompareTo(postDate) >= 0) && (ps.Title.Contains(TitleWord))).ToList();
+
+            return lstFoundPost;
+        }
+
+        public List<Post> FindPost(string author, DateTime postDate)
+        {
+            List<Post> lstFoundPost = new List<Post>();
+            lstFoundPost = _posts.Where(ps => (ps.PostDate.CompareTo(postDate) >= 0) && ((ps.Author.Contains(author)))).ToList();
+
+            return lstFoundPost;
+        }
+
+        public List<Comment> FindComments(DateTime commentDate, string searchWord, string advertiser)
+        {
+            List<Comment> lstFoundComments = new List<Comment>();
+
+            lstFoundComments = _comments.Where(cm => (cm.CommentDate.CompareTo(commentDate) >= 0) && (cm.Commenter.Equals(advertiser))
+                                                      && (cm.Text.Contains(searchWord))).ToList();
+
+            return lstFoundComments;
+        }
+
+        public List<Comment> FindComments(string advertiser, DateTime commentDate)
+        { 
+        
+            List<Comment> lstFoundComments = new List<Comment>();
+            lstFoundComments = _comments.Where(cm => (cm.CommentDate.CompareTo(commentDate) >= 0) && (cm.Commenter.Equals(advertiser))).ToList();
+
+            return lstFoundComments;
+        }
+
+        public List<Comment> FindComments(DateTime commentDate, string searchWord)
+        {
+            List<Comment> lstFoundComments = new List<Comment>();
+
+            lstFoundComments = _comments.Where(cm => (cm.CommentDate.CompareTo(commentDate) >= 0) && (cm.Text.Contains(searchWord))).ToList();
+
+            return lstFoundComments;
+        }
     }
 }

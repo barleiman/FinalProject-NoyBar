@@ -40,7 +40,7 @@ namespace TryAgain.Models
 
         [Display(Name = "Fan gender")]
         public string Gender { get; set; }
-
+    
 
         [Display(Name = "Fan birthdate")]
         [DataType(DataType.DateTime)]
