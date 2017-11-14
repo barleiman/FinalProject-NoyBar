@@ -314,3 +314,4 @@ C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\Tr
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.csproj.CoreCompileInputs.cache
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.dll
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.pdb
+C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.newGitVers.resources
