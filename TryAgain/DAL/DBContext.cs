@@ -103,6 +103,10 @@ namespace TryAgain.DAL
             return lstFoundPost;
         }
 
+        /// <summary>
+        /// WEB-SERVICE get the current IP of the user
+        /// </summary>
+        /// <returns></returns>
         public List<Comment> FindComments(DateTime commentDate, string searchWord, string advertiser)
         {
             List<Comment> lstFoundComments = new List<Comment>();
@@ -129,6 +133,22 @@ namespace TryAgain.DAL
             lstFoundComments = _comments.Where(cm => (cm.CommentDate.CompareTo(commentDate) >= 0) && (cm.Text.Contains(searchWord))).ToList();
 
             return lstFoundComments;
+        }
+
+        public List<Post> commonPosts(Fan chosenFan)
+        {
+            // getting the postid of all the posts the fan ever commented on 
+           var postsForFans =
+                from comment in _comments
+                join Fan in _Fans on comment.Commenter equals Fan.UserName
+                group comment by comment.PostID into PostsComments
+                let numOfComments = PostsComments.Count()
+                orderby numOfComments descending
+                select new { FoundPost = PostsComments.Key };
+
+
+//           List<Post> FoundPosts = _posts.Where(ps => (ps.PostID.))
+            return null;
         }
     }
 }
