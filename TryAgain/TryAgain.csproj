@@ -228,6 +228,10 @@
     <Compile Include="Migrations\201711082235023_fansNewMig.Designer.cs">
       <DependentUpon>201711082235023_fansNewMig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711132141571_newGitVers.cs" />
+    <Compile Include="Migrations\201711132141571_newGitVers.Designer.cs">
+      <DependentUpon>201711132141571_newGitVers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Fan.cs" />
@@ -379,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711082235023_fansNewMig.resx">
       <DependentUpon>201711082235023_fansNewMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711132141571_newGitVers.resx">
+      <DependentUpon>201711132141571_newGitVers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

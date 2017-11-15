@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -21,14 +23,17 @@ namespace TryAgain.Controllers
         {
             string strIP = db.getIP();
 
-            // TODO: getting the data fo the current user
+            // TODO: getting the data for the current user
 
             // getting the ip data of the current user 
             ViewData["geoIP"] = strIP;
 
+            // calaculating the num of posts in every rate 
             CalcRatesGraphData();
 
+            // calculating the num of posts in the last  month
             CalcLineGraphData();
+
             return View();
         }
 
@@ -140,75 +145,39 @@ namespace TryAgain.Controllers
         public void CalcLineGraphData()
         {
             List<Post> lstFans = db._posts.ToList();
-            int maxRate = 5;
-            int[] data = new int[maxRate + 1];
 
-            for (int i = 0; i < maxRate; i++)
+            int monthCount = 0;
+            int maxDate = 6;
+            int currMonth;
+            int currYear;
+            string[] data = new string[maxDate];
+
+
+            for (int i = 0; i < maxDate; i++)
             {
-                data[i] = 0;
-            }
+                currMonth = DateTime.Today.AddMonths(-(i+1)).Month;
+                currYear = DateTime.Today.AddMonths(-i).Year;
+                monthCount = lstFans.Where(ps => ps.PostDate.Month.Equals(currMonth) && ps.PostDate.Year.Equals(currYear)).Count();
 
-            int RounRate = 0;
+                data[i] = DateTime.Today.AddMonths(-i).GetDateTimeFormats('u')[0].Substring(0,10) + "," + monthCount;//.ToString("yyyy-MM-dd") + "," + monthCount ;
+                 }
 
-            foreach (Post item in lstFans)
-            {
-                if (item.postRate <= maxRate && item.postRate >= 0)
-                {
-                    RounRate = (int)Math.Round(item.postRate);
-                    data[RounRate]++;
-                }
-            }
-            string str = "[ { year : 2007, value: -10},{ year : 2008, value: 34}, { year : 2009, value: 10},{ year : 2010, value: -60},  { year : 2011, value: -40}, { year : 2012, value: 20},{ year : 2013, value: 45}, { year : 2014, value: 50},{ year : 2015, value: 60},  { year : 2016, value: 40} ]";
-
-            var json = new JavaScriptSerializer().Serialize(str);
-
+        
+            string json = JsonConvert.SerializeObject(data);
 
             ViewData["LineData"] = json;
         }
 
 
-        /// <summary>
-        /// Calc the post rating data to the bar graph
-        /// </summary>
-        public void CalcRatesGraphData2()
-        {
-            List<Post> lstFans = db._posts.ToList();
-            int maxRate = 5;
-            int[] data = new int[maxRate + 1];
-            string strdata = "[";
-            Dictionary<string, int> dddd = new Dictionary<string, int>();
-
-            for (int i = 0; i < maxRate; i++)
-            {
-                data[i] = 0;
-            }
-
-            int RounRate = 0;
-
-            foreach (Post item in lstFans)
-            {
-                if (item.postRate <= maxRate && item.postRate >= 0)
-                {
-                    RounRate = (int)Math.Round(item.postRate);
-                    data[RounRate]++;
-                }
-            }
-
-            string[] final = new string[maxRate];
-            for (int i = 0; i < maxRate; i++)
-            {
-                dddd.Add(i.ToString(), data[i]);
-                final[i] = @"{ 'key':" +i.ToString() + ", 'value': " + data[i] + " }";
-                strdata += @"{ key:" + i.ToString() + ", value: " + data[i] + " }";
-                if (i!= maxRate-1)
-                {
-                    strdata += ",";
-                }
-            }
-
-            strdata += "]";
-
-            ViewData["RateData"] = dddd;
-        }
+       
 }
+    public static class JavaScript
+    {
+        public static string Serialize(object o)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return js.Serialize(o);
+        }
+    }
+
 }
