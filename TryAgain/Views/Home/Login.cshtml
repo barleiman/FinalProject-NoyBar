@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+<div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <section class="mdc-card__primary">
+        <h4 class="mdc-card__subtitle">Login</h4>
+    </section>
+    <section class="mdc-card__supporting-text">
+        <form>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="username"><span class="highlight" id="username"></span><span class="bar"></span>
+                <label class="mdl-textfield__label" for="username">UserName</label>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="password"><span class="highlight" id="username"></span><span class="bar"></span>
+                <label class="mdl-textfield__label" for="password">password</label>
+            </div>
+            </br>
+            <button type="button" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" onclick="validate()">
+                Login
+           </button>
+            <p>New User?</p>
+            <button type="button" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" onclick="location.href='@Url.Action("Register", "Home")'">
+                signin
+                </button>
+            <button type="button" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" onclick="location.href='@Url.Action("Index", "Managment")'">
+                Cancel
+            </button>
+        </form>
+    </section>
+  
+</div>
