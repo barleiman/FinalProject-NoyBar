@@ -9,8 +9,5 @@ namespace TryAgain.Models
     {
 
         public string geoIP { get; set; }
-        public static Fan logedonUser { get; set; }
-
-
     }
 }

@@ -423,14 +423,3 @@ footer ul li a {
     position: relative;
     color: black;
 }
-
-.demo-card-square.mdl-card {
-    width: 400px;
-    height: 450px;
-    text-align:center;
-    align-content:center;
-}
-
-.demo-card-square > .mdl-card__title {
-    color: #fff;
-}
