@@ -306,3 +306,5 @@ C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\Tr
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.csproj.GenerateResource.Cache
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.DBUserAddDetails.resources
 >>>>>>> 49a45ab5ed12ac102106295e37586a2568809dac
+C:\Users\BarL\Desktop\לימודים\שנה ב\סמסטר ג\אפליקציות אינטרנטיות\The final project\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.DBUserChange.resources
+C:\Users\BarL\Desktop\לימודים\שנה ב\סמסטר ג\אפליקציות אינטרנטיות\The final project\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.DBUserAddDetails.resources
