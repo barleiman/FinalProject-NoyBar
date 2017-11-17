@@ -138,17 +138,16 @@ namespace TryAgain.DAL
         public List<Post> commonPosts(Fan chosenFan)
         {
             // getting the postid of all the posts the fan ever commented on 
-           var postsForFans =
-                from comment in _comments
-                join Fan in _Fans on comment.Commenter equals Fan.UserName
-                group comment by comment.PostID into PostsComments
-                let numOfComments = PostsComments.Count()
-                orderby numOfComments descending
-                select new { FoundPost = PostsComments.Key };
-
-
-//           List<Post> FoundPosts = _posts.Where(ps => (ps.PostID.))
-            return null;
+            var postsForFans =
+                 (from comment in _comments
+                 group comment by comment.PostID into PostComments
+                 join post in _posts on PostComments.Key equals post.PostID
+                 let commCount = PostComments.Count()
+                 orderby commCount descending
+                 select post).Take(10).ToList();
+           
+            return postsForFans;
         }
+
     }
 }
