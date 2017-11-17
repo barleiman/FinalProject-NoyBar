@@ -168,69 +168,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710281734426_mig1.cs" />
-    <Compile Include="Migrations\201710281734426_mig1.Designer.cs">
-      <DependentUpon>201710281734426_mig1.cs</DependentUpon>
+    <Compile Include="Migrations\201711162306382_DBUserChange.cs" />
+    <Compile Include="Migrations\201711162306382_DBUserChange.Designer.cs">
+      <DependentUpon>201711162306382_DBUserChange.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710311658049_ratepost.cs" />
-    <Compile Include="Migrations\201710311658049_ratepost.Designer.cs">
-      <DependentUpon>201710311658049_ratepost.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710311701404_ratepost1.cs" />
-    <Compile Include="Migrations\201710311701404_ratepost1.Designer.cs">
-      <DependentUpon>201710311701404_ratepost1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710311902444_ratepost2.cs" />
-    <Compile Include="Migrations\201710311902444_ratepost2.Designer.cs">
-      <DependentUpon>201710311902444_ratepost2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710311943249_ratecommentCustom.cs" />
-    <Compile Include="Migrations\201710311943249_ratecommentCustom.Designer.cs">
-      <DependentUpon>201710311943249_ratecommentCustom.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711011722151_ratecomment.cs" />
-    <Compile Include="Migrations\201711011722151_ratecomment.Designer.cs">
-      <DependentUpon>201711011722151_ratecomment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711041700241_ratemig.cs" />
-    <Compile Include="Migrations\201711041700241_ratemig.Designer.cs">
-      <DependentUpon>201711041700241_ratemig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711041710103_doubleRateMig.cs" />
-    <Compile Include="Migrations\201711041710103_doubleRateMig.Designer.cs">
-      <DependentUpon>201711041710103_doubleRateMig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711042038393_BaseModel.cs" />
-    <Compile Include="Migrations\201711042038393_BaseModel.Designer.cs">
-      <DependentUpon>201711042038393_BaseModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711071819226_fansmig.cs" />
-    <Compile Include="Migrations\201711071819226_fansmig.Designer.cs">
-      <DependentUpon>201711071819226_fansmig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711071826221_fansmig2.cs" />
-    <Compile Include="Migrations\201711071826221_fansmig2.Designer.cs">
-      <DependentUpon>201711071826221_fansmig2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711082011021_fansmig1.cs" />
-    <Compile Include="Migrations\201711082011021_fansmig1.Designer.cs">
-      <DependentUpon>201711082011021_fansmig1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711082046403_fansmig3.cs" />
-    <Compile Include="Migrations\201711082046403_fansmig3.Designer.cs">
-      <DependentUpon>201711082046403_fansmig3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711082052227_fansmig4.cs" />
-    <Compile Include="Migrations\201711082052227_fansmig4.Designer.cs">
-      <DependentUpon>201711082052227_fansmig4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711082235023_fansNewMig.cs" />
-    <Compile Include="Migrations\201711082235023_fansNewMig.Designer.cs">
-      <DependentUpon>201711082235023_fansNewMig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711132141571_newGitVers.cs" />
-    <Compile Include="Migrations\201711132141571_newGitVers.Designer.cs">
-      <DependentUpon>201711132141571_newGitVers.cs</DependentUpon>
+    <Compile Include="Migrations\201711162343423_DBUserAddDetails.cs" />
+    <Compile Include="Migrations\201711162343423_DBUserAddDetails.Designer.cs">
+      <DependentUpon>201711162343423_DBUserAddDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -321,6 +265,11 @@
     <Content Include="Views\FansClub\Edit.cshtml" />
     <Content Include="Views\FansClub\Index.cshtml" />
     <Content Include="Views\Home\data.tsv" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -339,61 +288,19 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710281734426_mig1.resx">
-      <DependentUpon>201710281734426_mig1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710311658049_ratepost.resx">
-      <DependentUpon>201710311658049_ratepost.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710311701404_ratepost1.resx">
-      <DependentUpon>201710311701404_ratepost1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710311902444_ratepost2.resx">
-      <DependentUpon>201710311902444_ratepost2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710311943249_ratecommentCustom.resx">
-      <DependentUpon>201710311943249_ratecommentCustom.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711011722151_ratecomment.resx">
-      <DependentUpon>201711011722151_ratecomment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711041700241_ratemig.resx">
-      <DependentUpon>201711041700241_ratemig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711041710103_doubleRateMig.resx">
-      <DependentUpon>201711041710103_doubleRateMig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711042038393_BaseModel.resx">
-      <DependentUpon>201711042038393_BaseModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711071819226_fansmig.resx">
-      <DependentUpon>201711071819226_fansmig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711071826221_fansmig2.resx">
-      <DependentUpon>201711071826221_fansmig2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711082011021_fansmig1.resx">
-      <DependentUpon>201711082011021_fansmig1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711082046403_fansmig3.resx">
-      <DependentUpon>201711082046403_fansmig3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711082052227_fansmig4.resx">
-      <DependentUpon>201711082052227_fansmig4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711082235023_fansNewMig.resx">
-      <DependentUpon>201711082235023_fansNewMig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711132141571_newGitVers.resx">
-      <DependentUpon>201711132141571_newGitVers.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\GeoIPWebService\" />
     <WCFMetadataStorage Include="Connected Services\SunsetWebService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711162306382_DBUserChange.resx">
+      <DependentUpon>201711162306382_DBUserChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711162343423_DBUserAddDetails.resx">
+      <DependentUpon>201711162343423_DBUserAddDetails.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

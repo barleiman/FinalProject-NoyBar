@@ -20,16 +20,12 @@
         <div class="navbar-collapse collapse">
             <nav>
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
                     <li>@Html.ActionLink("Fans Club", "Index", "FansClub")</li>
                     <li>@Html.ActionLink("Managment", "Index", "Managment")</li>
                     <li>@Html.ActionLink("Blog", "Index", "Lead Posts")</li>
                     <li>@Html.ActionLink("Statistics", "Index", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Index", "Home")</li>
-                    <li class="subscribe">
-                        <div class="hover">
-                            <a href="#">Subscribe via. RSS</a>
-                        </div>
-                    </li>
                 </ul>
             </nav>
 
@@ -44,7 +40,7 @@
         </header>
         <p>The best Fans' blog of shauli fans in the world!!!</p>
         <p>hello from: @Html.Raw(Json.Encode( ViewData["geoIP"]))</p>
-        <img src="../../images/intro_flower.png"  />
+        <!--<img src="../../images/intro_flower.png"  />-->
     </section>
 
 

@@ -7,7 +7,7 @@ using System.Web;
 namespace TryAgain.Models
 {
 
-    public class Fan : ViewModelBase
+    public class Fan 
     {
         static int countIDs = 0;
 
@@ -22,15 +22,30 @@ namespace TryAgain.Models
         [Key]
         public int ID { get; set; }
 
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+
+
         [Display(Name = "Username")]
         [DataType(DataType.Text)]
         public string UserName { get; set; }
 
-        [Display(Name = "Password")]
-        [DataType(DataType.Text)]
-        public string Password { get; set; }
 
-        [Display(Name = "Fan firs-tname")]
+        [Display(Name = "Fan first-name")]
         [DataType(DataType.Text)]
         public string FirstName { get; set; }
 
@@ -51,5 +66,9 @@ namespace TryAgain.Models
         public DateTime RegistrationDate { get; set; }
 
         public Authority FanAuthority { get; set; }
-      }
+
+        [Display(Name = "User website address")]
+        [DataType(DataType.Url)]
+        public string SiteAddr { get; set; }
+    }
 }
