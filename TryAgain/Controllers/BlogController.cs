@@ -102,6 +102,9 @@ namespace TryAgain.Controllers
                 }
                 post.postRate = ((double)calcRate / (post.Comments.Count())) ;
 
+                db.Entry(post).State = EntityState.Modified;
+                db.SaveChanges();
+
                 return RedirectToAction("Index", "Blog", new { id = comment.PostID });
             }
 
