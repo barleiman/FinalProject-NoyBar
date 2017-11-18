@@ -182,9 +182,32 @@
     <Compile Include="Migrations\201711181941186_userMig.Designer.cs">
       <DependentUpon>201711181941186_userMig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711182123084_comAndPstMig.cs" />
+    <Compile Include="Migrations\201711182123084_comAndPstMig.Designer.cs">
+      <DependentUpon>201711182123084_comAndPstMig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711182223587_loginmig.cs" />
+    <Compile Include="Migrations\201711182223587_loginmig.Designer.cs">
+      <DependentUpon>201711182223587_loginmig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711182253504_loginmigNew.cs" />
+    <Compile Include="Migrations\201711182253504_loginmigNew.Designer.cs">
+      <DependentUpon>201711182253504_loginmigNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711182304198_loginmigNew1.cs" />
+    <Compile Include="Migrations\201711182304198_loginmigNew1.Designer.cs">
+      <DependentUpon>201711182304198_loginmigNew1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711182307437_UserKey.cs" />
+    <Compile Include="Migrations\201711182307437_UserKey.Designer.cs">
+      <DependentUpon>201711182307437_UserKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711182313238_userduplicate.cs" />
+    <Compile Include="Migrations\201711182313238_userduplicate.Designer.cs">
+      <DependentUpon>201711182313238_userduplicate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Fan.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\ViewModelBase.cs" />
     <Compile Include="Models\Post.cs" />
@@ -308,6 +331,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711181941186_userMig.resx">
       <DependentUpon>201711181941186_userMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711182123084_comAndPstMig.resx">
+      <DependentUpon>201711182123084_comAndPstMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711182223587_loginmig.resx">
+      <DependentUpon>201711182223587_loginmig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711182253504_loginmigNew.resx">
+      <DependentUpon>201711182253504_loginmigNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711182304198_loginmigNew1.resx">
+      <DependentUpon>201711182304198_loginmigNew1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711182307437_UserKey.resx">
+      <DependentUpon>201711182307437_UserKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711182313238_userduplicate.resx">
+      <DependentUpon>201711182313238_userduplicate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

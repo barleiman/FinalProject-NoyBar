@@ -1,4 +1,6 @@
-﻿@model  IEnumerable<TryAgain.Models.Comment>
+﻿
+@using TryAgain.Models
+@model  IEnumerable<TryAgain.Models.Comment>
 
 @{
     ViewBag.Title = "Details";
@@ -18,7 +20,7 @@
                 <h5> @Html.ActionLink(@Html.DisplayFor(modelitem => item.Title).ToString(), "Details", "Blog", new { id = item.CommentID }, new { id = item.CommentID })</h5>
                 <p>
                     <b> Comment on: </b> <time datetime=@Html.DisplayFor(modelitem => item.CommentDate)>@Html.DisplayFor(modelitem => item.CommentDate)</time>
-                    <b> by: </b>  @Html.DisplayFor(modelitem => item.Commenter) <b> website: </b> @Html.DisplayFor(modelitem => item.CommenterSiteAddr) 
+                    <b> by: </b>  @Html.DisplayFor(modelitem => item.commentUser.UserName) <b> website: </b> @Html.DisplayFor(modelitem => item.commentUser.SiteAddr) 
                     <br />
                     <b> Rating : </b> @Html.DisplayFor(modelitem => item.givenRate)
                     <b>  on </b>@Html.ActionLink("this", "Index", "Blog", new { id = item.PostID }) <b >post</b>
@@ -29,11 +31,18 @@
             </div>
         </article>
 
+        if (item.commentUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin) || item.commentUser.Email.Equals(ViewModelBase.logedonUser.Email))
+        {
         <div class="button-row">
-            <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "Blog", new { id = item.CommentID })'">Edit comment</button>
-            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete","Blog", new { id = item.CommentID })'">Delete comment</button>
             <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Details", "Blog", new { id = item.CommentID })'">View comment </button>
+            @if ((ViewModelBase.logedonUser.Email.Equals(item.commentUser.Email) && ViewModelBase.logedonUser.UserName.Equals(item.commentUser.UserName)) || ViewModelBase.logedonUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin))
+            {
+            <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "Blog", new { id = item.CommentID })'">Edit comment</button>
+            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete", "Blog", new { id = item.CommentID })'">Delete comment</button>
+                }
         </div>
+
+            } 
     }
 
 </div>

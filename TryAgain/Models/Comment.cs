@@ -30,6 +30,7 @@ namespace TryAgain.Models
         [DataType(DataType.Text)]
         public string Title { get; set; }
 
+        /*
         [Display(Name = "Commenter name")]
         [DataType(DataType.Text)]
         [StringLength(80, ErrorMessage = "Full name cannot be longer than 80 characters.")]
@@ -38,6 +39,7 @@ namespace TryAgain.Models
         [Display(Name = "Commenter site address")]
         [DataType(DataType.Url)]
         public string CommenterSiteAddr { get; set; }
+        */
 
         [Display(Name = "Comment text")]
         [DataType(DataType.MultilineText)]
@@ -54,6 +56,7 @@ namespace TryAgain.Models
         [Range(0, 5)]
         public double givenRate { set; get; }
 
+        public virtual User commentUser { get; set; }
 
     }
 }

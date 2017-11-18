@@ -25,13 +25,13 @@ namespace TryAgain.Controllers
         }
 
         // GET: FansClub/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string email)
         {
-            if (id == null)
+            if (email == null || email != string.Empty)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User fan = db._users.Find(id);
+            User fan = db._users.Find(email);
             if (fan == null)
             {
                 return HttpNotFound();
@@ -75,13 +75,13 @@ namespace TryAgain.Controllers
         }
 
         // GET: FansClub/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string email)
         {
-            if (id == null)
+            if (email == null || email != string.Empty)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User fan = db._users.Find(id);
+            User fan = db._users.Find(email);
             if (fan == null)
             {
                 return HttpNotFound();
@@ -109,13 +109,13 @@ namespace TryAgain.Controllers
         }
 
         // GET: FansClub/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string email)
         {
-            if (id == null)
+            if (email == null || email != string.Empty)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User fan = db._users.Find(id);
+            User fan = db._users.Find(email);
             if (fan == null)
             {
                 return HttpNotFound();

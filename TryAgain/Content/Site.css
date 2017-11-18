@@ -435,3 +435,7 @@ footer {
     text-align: center;
     align-content: center;
 }
+ #map {
+    height: 200px;
+    width: 100%;
+}

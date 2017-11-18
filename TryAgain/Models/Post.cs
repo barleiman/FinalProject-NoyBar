@@ -29,7 +29,7 @@ namespace TryAgain.Models
         [Display(Name = "Post title")]
         [DataType(DataType.Text)]
         public string Title { get; set; }
-
+        /*
         [Display(Name = "Author name")]
         [DataType(DataType.Text)]
         [StringLength(80, ErrorMessage = "First name cannot be longer than 80 characters.")]
@@ -38,6 +38,7 @@ namespace TryAgain.Models
         [Display(Name = "Author website address")]
         [DataType(DataType.Url)]
         public string AuthorSiteAddr { get; set; }
+        */
 
         [Display(Name = "Post writing Date")]
         [DataType(DataType.DateTime)]
@@ -52,6 +53,8 @@ namespace TryAgain.Models
         [Display(Name = "Post rate")]
         [Range(0, 5)]
         public double postRate { get; set; }
+
+        public virtual User postUser { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
 

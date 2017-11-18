@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -13,14 +14,15 @@ namespace TryAgain.Models
 
         public User()
         {
-            this.ID = countIDs;
+           // this.ID = countIDs;
             countIDs++;
         }
 
-        [Key]
+        /*[Key]
+        [Column(Order = 2)]
         public int ID { get; set; }
-
-        [Required]
+        */
+        [Key]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

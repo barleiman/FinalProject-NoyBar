@@ -82,7 +82,7 @@ namespace TryAgain.DAL
         {
             List<Post> lstFoundPost = new List<Post>();
             lstFoundPost = _posts.Where(ps => (ps.PostDate.CompareTo(postDate) >= 0) && (ps.Title.Contains(TitleWord)) &&
-                                              (ps.Author.Contains(author))).ToList();
+                                              (ps.postUser.UserName.Contains(author))).ToList();
 
             return lstFoundPost;
         }
@@ -98,7 +98,7 @@ namespace TryAgain.DAL
         public List<Post> FindPost(string author, DateTime postDate)
         {
             List<Post> lstFoundPost = new List<Post>();
-            lstFoundPost = _posts.Where(ps => (ps.PostDate.CompareTo(postDate) >= 0) && ((ps.Author.Contains(author)))).ToList();
+            lstFoundPost = _posts.Where(ps => (ps.PostDate.CompareTo(postDate) >= 0) && ((ps.postUser.UserName.Contains(author)))).ToList();
 
             return lstFoundPost;
         }
@@ -111,7 +111,7 @@ namespace TryAgain.DAL
         {
             List<Comment> lstFoundComments = new List<Comment>();
 
-            lstFoundComments = _comments.Where(cm => (cm.CommentDate.CompareTo(commentDate) >= 0) && (cm.Commenter.Equals(advertiser))
+            lstFoundComments = _comments.Where(cm => (cm.CommentDate.CompareTo(commentDate) >= 0) && (cm.commentUser.UserName.Equals(advertiser))
                                                       && (cm.Text.Contains(searchWord))).ToList();
 
             return lstFoundComments;
@@ -121,7 +121,7 @@ namespace TryAgain.DAL
         { 
         
             List<Comment> lstFoundComments = new List<Comment>();
-            lstFoundComments = _comments.Where(cm => (cm.CommentDate.CompareTo(commentDate) >= 0) && (cm.Commenter.Equals(advertiser))).ToList();
+            lstFoundComments = _comments.Where(cm => (cm.CommentDate.CompareTo(commentDate) >= 0) && (cm.commentUser.UserName.Equals(advertiser))).ToList();
 
             return lstFoundComments;
         }
@@ -149,21 +149,22 @@ namespace TryAgain.DAL
             return postsForFans;
         }
 
+        //TODO: שיניתי את זה  
         public List<Post> recommendedPosts (string FanID)
         {
             // Find Recommended authors for the fan
             var RecommendedAuthors =
             (from comment in _comments
              join post in _posts on comment.PostID equals post.PostID
-             where comment.Commenter == FanID
-             select new { comment.PostID, post.Author } into TBL
-             group TBL by TBL.Author into favAuthors
+             where comment.commentUser.Email == FanID
+             select new { comment.PostID, post.postUser.UserName } into TBL
+             group TBL by TBL.UserName into favAuthors
              select new { favAuthors.Key }).Take(3).ToList();
 
             // Find the recommended posts according to authors
-            List<Post> recPosts = _posts.Where(pst => ((pst.Author.Equals(RecommendedAuthors[1].ToString())) ||
-                                                       (pst.Author.Equals(RecommendedAuthors[2].ToString())) ||
-                                                       (pst.Author.Equals(RecommendedAuthors[3].ToString()))) && 
+            List<Post> recPosts = _posts.Where(pst => ((pst.postUser.UserName.Equals(RecommendedAuthors[1].ToString())) ||
+                                                       (pst.postUser.UserName.Equals(RecommendedAuthors[2].ToString())) ||
+                                                       (pst.postUser.UserName.Equals(RecommendedAuthors[3].ToString()))) && 
                                                        (pst.postRate.Equals(5))).ToList();
             return recPosts;
         }

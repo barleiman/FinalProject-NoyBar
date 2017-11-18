@@ -21,9 +21,9 @@ namespace TryAgain.Controllers
         {
 
             // TODO: getting the data fo the current user
+            List<Post> lstpo = db._posts.ToList();
 
-
-            return View(db._posts.ToList());
+            return View(lstpo);
         }
 
         // GET: Managment/Details/5
@@ -46,7 +46,11 @@ namespace TryAgain.Controllers
         // GET: Managment/Create
         public ActionResult Create()
         {
-            return View();
+            Post post = new Post();
+
+            post.postUser = ViewModelBase.logedonUser;
+
+            return View(post);
         }
 
         // POST: Managment/Create
@@ -54,7 +58,7 @@ namespace TryAgain.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PostID,Title,Author,AuthorSiteAddr,PostDate,PostText,postRate")] Post post)
+        public ActionResult Create([Bind(Include = "PostID,Title,PostDate,PostText,postRate,postUser")] Post post)
         {
             if (!ModelState.IsValid)
             {
@@ -67,6 +71,10 @@ namespace TryAgain.Controllers
             {
                 post.PostDate = DateTime.Now.Date;
                 post.postRate = 0;
+                post.postUser =  ViewModelBase.logedonUser;
+
+                db.Entry(post.postUser).State = EntityState.Unchanged;
+
                 db._posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -95,12 +103,14 @@ namespace TryAgain.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PostID,Title,Author,AuthorSiteAddr,PostDate,PostText,postRate")] Post post)
+        public ActionResult Edit([Bind(Include = "PostID,Title,PostDate,PostText,postRate,postUser")] Post post)
         {
             if (ModelState.IsValid)
             {
                 post.PostDate = DateTime.Now.Date;
                 db.Entry(post).State = EntityState.Modified;
+                db.Entry(post.postUser).State = EntityState.Unchanged;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -131,7 +141,7 @@ namespace TryAgain.Controllers
             List<Comment> comm = db._comments.Where((item) => (item.PostID == id)).ToList();
 
             db._comments.RemoveRange(comm);
-
+            db.Entry(post.postUser).State = EntityState.Unchanged;
             db._posts.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");

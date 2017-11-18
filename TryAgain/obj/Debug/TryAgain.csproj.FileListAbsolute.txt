@@ -92,3 +92,9 @@ C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\bin\Microsof
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.userMig.resources
+C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.comAndPstMig.resources
+C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.loginmig.resources
+C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.loginmigNew.resources
+C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.loginmigNew1.resources
+C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.UserKey.resources
+C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.userduplicate.resources

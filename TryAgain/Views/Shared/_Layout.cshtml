@@ -45,7 +45,7 @@
             <h3>Have fun in shauli's Fan Club</h3>
         </header>
         <p>The best Fans' blog of shauli fans in the world!!!</p>
-        <img src="../../images/intro_flower.png"  />
+        <img src="../../images/intro_flower.png" />
     </section>
 
 
@@ -58,7 +58,7 @@
 
         </div>
         <!--the side options-->
-        <aside class="side_bar" >
+        <aside class="side_bar">
             <h4>   search   </h4>
             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                 <div class="mdl-tabs__tab-bar">
@@ -119,13 +119,13 @@
                         </form>
                     </section>
                 </div>
-               
+
             </div>
         </aside>
 
         <!-- Page footer -->
         <footer>
-            <div>
+       <!--<div>
                 <section id="about">
                     <header>
                         <h3>About</h3>
@@ -151,30 +151,32 @@
                         <li><a href="#">Consectetur adipisicing elit, sed do eiusmod</a></li>
                     </ul>
                 </section>
+            </div>-->     
+
+
+            <!--map content-->
+            <div class="map-content" id="map">
+                <script>
+                    function initMap() {
+                    }
+                </script>
             </div>
         </footer>
     </div>
 
-    <!--map content-->
-    <div class="map-content" id="map">
-        <script>
-            function initMap() {
-            }
-        </script>
-    </div>
 
     <script>
-         function initMap() {
-             var uluru = { lat: -25.363, lng: 131.044 };
-             var map = new google.maps.Map(document.getElementById('map'), {
-                 zoom: 4,
-                 center: uluru
-             });
-             var marker = new google.maps.Marker({
-                 position: uluru,
-                 map: map
-             });
-         }
+                    function initMap() {
+                        var uluru = { lat: -25.363, lng: 131.044 };
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 4,
+                            center: uluru
+                        });
+                        var marker = new google.maps.Marker({
+                            position: uluru,
+                            map: map
+                        });
+                    }
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGePuw7jpoi3kEDtVm2Pz_CfxcvuBC28U&callback=initMap">

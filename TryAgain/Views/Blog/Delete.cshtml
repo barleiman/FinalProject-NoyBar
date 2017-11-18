@@ -16,7 +16,7 @@
             <header>
                 <a href="#">@Html.DisplayFor(modelitem => Model.Title)</a>
                 on <time datetime=@Html.DisplayFor(modelitem => Model.CommentDate)>@Html.DisplayFor(modelitem => Model.CommentDate)</time>
-                by <a href="@Html.DisplayFor(modelitem => Model.CommenterSiteAddr)">@Html.DisplayFor(modelitem => Model.Commenter)</a>
+                by <a href="@Html.DisplayFor(modelitem => Model.commentUser.SiteAddr)">@Html.DisplayFor(modelitem => Model.commentUser.UserName)</a>
             </header>
             <p>@Html.DisplayFor(modelitem => Model.Text)</p>
         </article>

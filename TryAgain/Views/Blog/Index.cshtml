@@ -1,4 +1,5 @@
-﻿@model TryAgain.Models.Post
+﻿@using TryAgain.Models
+@model TryAgain.Models.Post
 
 @{
     ViewBag.Title = "Blog";
@@ -17,7 +18,7 @@
             <h3>@Html.DisplayFor(model => model.Title)</h3>
             <p>
                 <b> Posted on: </b> <time datetime=@Html.DisplayFor(model => model.PostDate)>@Html.DisplayFor(model => model.PostDate)</time>
-                <b> by: </b> @Html.DisplayFor(model => model.Author) <b> website: </b> @Html.DisplayFor(model => model.AuthorSiteAddr)
+                <b> by: </b> @Html.DisplayFor(model => model.postUser.UserName) <b> website: </b> @Html.DisplayFor(model => model.postUser.SiteAddr)
                 <br />
                 <b> Rating : </b> @Html.DisplayFor(modelitem => modelitem.postRate)
             </p>
@@ -32,15 +33,15 @@
     @if (Model.Comments != null && Model.Comments.Count >0)
     {
         <h5>Comments</h5>
-       
+
         foreach (var comm in Model.Comments)
         {
                     <article class="blogComment">
                         <header>  
-                            <a href=@Url.Action("Details", "Blog", new { id = comm.CommentID})>@Html.DisplayFor(modelitem => comm.Title)</a>
+                            <a href=@Url.Action("Details", "Blog", new { id = comm.CommentID })>@Html.DisplayFor(modelitem => comm.Title)</a>
                             <p>
                                 <b> commented on: </b> <time datetime=@Html.DisplayFor(modelitem => comm.CommentDate)>@Html.DisplayFor(modelitem => comm.CommentDate)</time>
-                                <b> by: </b> @Html.DisplayFor(modelitem => comm.Commenter) <b> on site: </b>  @Html.DisplayFor(modelitem => comm.CommenterSiteAddr)
+                                <b> by: </b> @Html.DisplayFor(modelitem => comm.commentUser.UserName) <b> on site: </b>  @Html.DisplayFor(modelitem => comm.commentUser.SiteAddr)
                                 <br />
                                 <b> Rating : </b> @Html.DisplayFor(modelitem => comm.givenRate)
                             </p>
@@ -50,11 +51,15 @@
                         </div>
                     </article>
 
+                    if (ViewModelBase.logedonUser!=null && ViewModelBase.logedonUser.Email.Equals(comm.commentUser.Email) && ViewModelBase.logedonUser.UserName.Equals(comm.commentUser.UserName))
+                    {
                     <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete", "Blog", new { id = comm.CommentID })'">Delete comment</button>
-
+                        }
+                    }
         }
     }
 </section>
-
+@if (ViewModelBase.logedonUser!=null) {
 <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Create", "Blog", new { id = Model.PostID })'">Add a new comment</button>
+}
 <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Managment", "Go to posts list")'">Go to posts list</button>

@@ -63,6 +63,8 @@ namespace TryAgain.Controllers
         {
             User model = new User();
 
+            ViewData["Error"] = "";
+
             return View(model);
         }
 
@@ -75,19 +77,23 @@ namespace TryAgain.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.RegistrationDate = DateTime.Now;
-                model.FanAuthority = Models.User.Authority.Fan;
-                model.UserName = model.FirstName + "  " + model.LastName;
+                List<User> fans = db._users.Where(fan => fan.Email.Equals(model.Email)).ToList();
+                if (fans.Count() == 0)
+                {
+                    model.RegistrationDate = DateTime.Now;
+                    model.FanAuthority = Models.User.Authority.Fan;
+                    model.UserName = model.FirstName + "  " + model.LastName;
+                    db._users.Add(model);
+                    db.SaveChanges();
 
-                db._users.Add(model);
-                db.SaveChanges();
+                    ViewModelBase.logedonUser = model;
 
-                ViewModelBase.logedonUser = model;
-
-                return RedirectToAction("Index", "Managment");
-
+                    return RedirectToAction("Index", "Managment");
+                }
+                else { ViewData["Error"] = "The email already exist"; ; }
             }
 
+          
             // If we got this far, something failed, redisplay form
             return View(model);
         }
@@ -96,6 +102,10 @@ namespace TryAgain.Controllers
         public ActionResult Login()
         {
             LoginViewModel lvmLogin = new LoginViewModel();
+
+            ViewData["Error"] = "";
+
+
             return View(lvmLogin);
         }
 
@@ -108,21 +118,18 @@ namespace TryAgain.Controllers
         // public ActionResult Login(Fan model)
         {
             List<User> fans = db._users.Where(fan => fan.Email.Equals(model.Email) && (fan.Password.Equals(model.Password))).ToList();
-            if (true)
-            {
-
-            }
 
             if (ModelState.IsValid)
             {
-
-
 
                 if (fans != null && fans.Count > 0)
                 {
                     ViewModelBase.logedonUser = fans.First();
                 }
-
+                else {
+                    ViewData["loginError"] = "Wrong user or password";
+                    return RedirectToAction("Login", "Home");
+                }
 
                 return RedirectToAction("Index", "Managment");
             }

@@ -18,7 +18,7 @@
                 <h5>@Html.DisplayFor(model => model.Title)</h5>
                 <p>
                     <b> commented on </b> <time datetime=@Html.DisplayFor(model => model.CommentDate)>@Html.DisplayFor(model => model.CommentDate)</time>
-                    <b> by: </b> @Html.DisplayFor(model => model.Commenter)  <b> website </b> @Html.DisplayFor(model => model.CommenterSiteAddr) 
+                    <b> by: </b> @Html.DisplayFor(model => model.commentUser.UserName)  <b> website </b> @Html.DisplayFor(model => model.commentUser.SiteAddr) 
                     <br />
                     <b> Rating : </b> @Html.DisplayFor(modelitem => Model.givenRate)
                     <b>  on </b>@Html.ActionLink("this", "Index", "Blog", new { id = Model.PostID }) <b>post</b>
@@ -33,7 +33,10 @@
     </div>
 </section>
 <p>
-    <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "Blog", new { id = Model.CommentID  })'">Edit Comment</button>
+    @if (TryAgain.Models.ViewModelBase.logedonUser.Email.Equals(Model.commentUser.Email))
+    {
+    <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "Blog", new { id = Model.CommentID })'">Edit Comment</button>
+    }
     <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Blog" , new { id = Model.PostID })'">Go to post</button>
     <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Managment" )'">Back to list</button>
 </p>

@@ -1,4 +1,6 @@
-﻿@model  IEnumerable<TryAgain.Models.Post>
+﻿@using TryAgain.Models
+
+@model  IEnumerable<TryAgain.Models.Post>
 
 @{
     ViewBag.Title = "Blog Posts";
@@ -18,7 +20,7 @@
                 <h5> @Html.ActionLink(@Html.DisplayFor(modelitem => item.Title).ToString(), "Index", "Blog", new { id = item.PostID }, new { id = item.PostID })</h5>
                 <p>
                     <b> Posted on: </b> <time datetime=@Html.DisplayFor(modelitem => item.PostDate)>@Html.DisplayFor(modelitem => item.PostDate)</time>
-                   <b> by: </b>  @Html.DisplayFor(modelitem => item.Author) <b> website: </b> @Html.DisplayFor(modelitem => item.AuthorSiteAddr)  
+                   <b> by: </b>  @Html.DisplayFor(modelitem => item.postUser.UserName) <b> website: </b> @Html.DisplayFor(modelitem => item.postUser.SiteAddr)  
                     
                     @if (item.Comments != null)
                     {
@@ -30,12 +32,23 @@
             </header>
         </article>
 
+        @if (ViewModelBase.logedonUser!=null)
+        {
         <div class="button-row">
-            <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "Managment", new { id = item.PostID })'">Edit post</button>
-            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete","Managment", new { id = item.PostID })'">Delete post</button>
             <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Blog", new { id = item.PostID })'">View post </button>
-            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Details", "Managment", new { id = item.PostID })'">Manage comment</button>
+            <!--Checking permissions-->
+            @if ((ViewModelBase.logedonUser.Email.Equals(item.postUser.Email) && ViewModelBase.logedonUser.UserName.Equals(item.postUser.UserName)) || ViewModelBase.logedonUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin))
+            {
+            <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "Managment", new { id = item.PostID })'">Edit post</button>
+            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete", "Managment", new { id = item.PostID })'">Delete post</button>
+
+            }
+            @if (ViewModelBase.logedonUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin))
+            {<button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Details", "Managment", new { id = item.PostID })'">Manage comment</button>
+            }
+
         </div>
+        }
     </section>
 }
 

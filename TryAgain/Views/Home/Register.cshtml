@@ -1,18 +1,17 @@
 ﻿@model TryAgain.Models.User
 
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Register New User";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h4>@ViewBag.Title.</h4>
 
 @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    
 
+    @ViewData["Error"]
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
 

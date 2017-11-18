@@ -73,6 +73,7 @@ namespace TryAgain.Controllers
             Comment comm = new Comment();
             comm.PostID = ID;
             comm.CommentDate = DateTime.Now.Date;
+            comm.commentUser = ViewModelBase.logedonUser;
 
             return View(comm);
         }
@@ -82,14 +83,16 @@ namespace TryAgain.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentID,PostID,Title,Commenter,CommenterSiteAddr,Text,CommentDate,givenRate")] Comment comment)
+        public ActionResult Create([Bind(Include = "CommentID,PostID,Title,Text,CommentDate,givenRate,commentUser")] Comment comment)
         {
             if (ModelState.IsValid)
             {
                 Post post = db._posts.Find(comment.PostID);
+                comment.commentUser = ViewModelBase.logedonUser;
                 post.Comments.Add(comment);
 
                 db._comments.Add(comment);
+                db.Entry(comment.commentUser).State = EntityState.Unchanged;
                 db.SaveChanges();
 
                 double calcRate = 0;
@@ -97,7 +100,7 @@ namespace TryAgain.Controllers
                 {
                     calcRate += item.givenRate;
                 }
-                post.postRate = ((double)calcRate / (post.Comments.Count()));
+                post.postRate = ((double)calcRate / (post.Comments.Count())) ;
 
                 return RedirectToAction("Index", "Blog", new { id = comment.PostID });
             }
@@ -126,12 +129,13 @@ namespace TryAgain.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CommentID,PostID,Title,Commenter,CommenterSiteAddr,Text,CommentDate,givenRate")] Comment comment)
+        public ActionResult Edit([Bind(Include = "CommentID,PostID,Title,Text,CommentDate,givenRate,commentUser")] Comment comment)
         {
             if (ModelState.IsValid)
             {
 
                 db.Entry(comment).State = EntityState.Modified;
+                db.Entry(comment.commentUser).State = EntityState.Unchanged;
 
 
                 Post post = db._posts.Find(comment.PostID);

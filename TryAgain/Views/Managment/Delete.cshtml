@@ -18,7 +18,7 @@
             <h2>@Html.DisplayFor(model => model.Title)</h2>
             <p>
                 Posted on <time datetime=@Html.DisplayFor(model => model.PostDate)>@Html.DisplayFor(model => model.PostDate)</time>
-                by <a href=@Html.DisplayFor(model => model.AuthorSiteAddr)></a> -@Html.DisplayFor(model => model.Author)
+                by <a href=@Html.DisplayFor(model => model.postUser.SiteAddr)></a> -@Html.DisplayFor(model => model.postUser.UserName)
                 @if (Model.Comments != null)
                 {
                     <a href="@Url.Action("Details", "Managmetn", new { id = Model.PostID })">@Html.DisplayFor(modelitem => Model.Comments.Count) comments </a>
@@ -38,8 +38,8 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect" />
-            <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Management")'">Back to List</button>
         </div>
     }
 
 </div>
+<button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Management")'">Back to List</button>
