@@ -135,7 +135,7 @@ namespace TryAgain.DAL
             return lstFoundComments;
         }
 
-        public List<Post> commonPosts(Fan chosenFan)
+        public List<Post> popularPosts()
         {
             // getting the postid of all the posts the fan ever commented on 
             var postsForFans =
@@ -147,6 +147,21 @@ namespace TryAgain.DAL
                  select post).Take(10).ToList();
                 
             return postsForFans;
+        }
+
+        public List<Post> recommendedPosts (int FanID)
+        {
+            /*var posts =
+              (_posts.Join(_comments, post => post.PostID , comment => comment.PostID,
+               (post,comment) => new
+               {
+                   Author = post.Author,
+                   PostID = post.PostID,
+                   Commenter = comment.Commenter,
+               }).Where 
+                );*/
+
+            return null;
         }
 
     }
