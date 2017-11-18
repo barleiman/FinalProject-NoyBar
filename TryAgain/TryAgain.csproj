@@ -206,6 +206,10 @@
     <Compile Include="Migrations\201711182313238_userduplicate.Designer.cs">
       <DependentUpon>201711182313238_userduplicate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711182342583_userduplicate1.cs" />
+    <Compile Include="Migrations\201711182342583_userduplicate1.Designer.cs">
+      <DependentUpon>201711182342583_userduplicate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\User.cs" />
@@ -349,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711182313238_userduplicate.resx">
       <DependentUpon>201711182313238_userduplicate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711182342583_userduplicate1.resx">
+      <DependentUpon>201711182342583_userduplicate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

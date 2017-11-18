@@ -98,3 +98,4 @@ C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\Tr
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.loginmigNew1.resources
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.UserKey.resources
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.userduplicate.resources
+C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.userduplicate1.resources
