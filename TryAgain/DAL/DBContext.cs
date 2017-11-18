@@ -149,19 +149,23 @@ namespace TryAgain.DAL
             return postsForFans;
         }
 
-        public List<Post> recommendedPosts (int FanID)
+        public List<Post> recommendedPosts (string FanID)
         {
-            /*var posts =
-              (_posts.Join(_comments, post => post.PostID , comment => comment.PostID,
-               (post,comment) => new
-               {
-                   Author = post.Author,
-                   PostID = post.PostID,
-                   Commenter = comment.Commenter,
-               }).Where 
-                );*/
+            // Find Recommended authors for the fan
+            var RecommendedAuthors =
+            (from comment in _comments
+             join post in _posts on comment.PostID equals post.PostID
+             where comment.Commenter == FanID
+             select new { comment.PostID, post.Author } into TBL
+             group TBL by TBL.Author into favAuthors
+             select new { favAuthors.Key }).Take(3).ToList();
 
-            return null;
+            // Find the recommended posts according to authors
+            List<Post> recPosts = _posts.Where(pst => ((pst.Author.Equals(RecommendedAuthors[1].ToString())) ||
+                                                       (pst.Author.Equals(RecommendedAuthors[2].ToString())) ||
+                                                       (pst.Author.Equals(RecommendedAuthors[3].ToString()))) && 
+                                                       (pst.postRate.Equals(5))).ToList();
+            return recPosts;
         }
 
     }
