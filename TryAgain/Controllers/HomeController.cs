@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -21,12 +22,16 @@ namespace TryAgain.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            string strIP = db.getIP();
 
             // TODO: getting the data for the current user
 
-            // getting the ip data of the current user 
-            ViewData["geoIP"] = strIP;
+
+            return View();
+        }
+
+
+        public ActionResult Statistics()
+        {
 
             // calaculating the num of posts in every rate 
             CalcRatesGraphData();
@@ -36,6 +41,96 @@ namespace TryAgain.Controllers
 
             return View();
         }
+
+
+
+
+        public ActionResult Contact()
+        {
+            string strIP = db.getIP();
+
+            // TODO: getting the data for the current user
+
+            // getting the ip data of the current user 
+            ViewData["geoIP"] = strIP;
+
+            return View();
+        }
+
+
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            User model = new User();
+
+            return View(model);
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(User model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.RegistrationDate = DateTime.Now;
+                model.FanAuthority = Models.User.Authority.Fan;
+                model.UserName = model.FirstName + "  " + model.LastName;
+
+                db._users.Add(model);
+                db.SaveChanges();
+
+                ViewModelBase.logedonUser = model;
+
+                return RedirectToAction("Index", "Managment");
+
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+
+        public ActionResult Login()
+        {
+            LoginViewModel lvmLogin = new LoginViewModel();
+            return View(lvmLogin);
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginViewModel model)
+        // public ActionResult Login(Fan model)
+        {
+            List<User> fans = db._users.Where(fan => fan.Email.Equals(model.Email) && (fan.Password.Equals(model.Password))).ToList();
+            if (true)
+            {
+
+            }
+
+            if (ModelState.IsValid)
+            {
+
+
+
+                if (fans != null && fans.Count > 0)
+                {
+                    ViewModelBase.logedonUser = fans.First();
+                }
+
+
+                return RedirectToAction("Index", "Managment");
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
 
         // GET: Home/Details/5
         public ActionResult Details(int id)
@@ -155,22 +250,22 @@ namespace TryAgain.Controllers
 
             for (int i = 0; i < maxDate; i++)
             {
-                currMonth = DateTime.Today.AddMonths(-(i+1)).Month;
+                currMonth = DateTime.Today.AddMonths(-(i + 1)).Month;
                 currYear = DateTime.Today.AddMonths(-i).Year;
                 monthCount = lstFans.Where(ps => ps.PostDate.Month.Equals(currMonth) && ps.PostDate.Year.Equals(currYear)).Count();
 
-                data[i] = DateTime.Today.AddMonths(-i).GetDateTimeFormats('u')[0].Substring(0,10) + "," + monthCount;//.ToString("yyyy-MM-dd") + "," + monthCount ;
-                 }
+                data[i] = DateTime.Today.AddMonths(-i).GetDateTimeFormats('u')[0].Substring(0, 10) + "," + monthCount;//.ToString("yyyy-MM-dd") + "," + monthCount ;
+            }
 
-        
+
             string json = JsonConvert.SerializeObject(data);
 
             ViewData["LineData"] = json;
         }
 
 
-       
-}
+
+    }
     public static class JavaScript
     {
         public static string Serialize(object o)

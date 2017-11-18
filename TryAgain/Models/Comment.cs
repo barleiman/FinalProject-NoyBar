@@ -17,10 +17,10 @@ namespace TryAgain.Models
             countIDs++;
         }
 
-       
+
         [ConcurrencyCheck]
         [Key]
-       // [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        // [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CommentID { get; set; }
 
         //[ForeignKey("Post.PostID")]

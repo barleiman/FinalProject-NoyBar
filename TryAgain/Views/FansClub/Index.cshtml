@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TryAgain.Models.Fan>
+﻿@model IEnumerable<TryAgain.Models.User>
 
 @{
     ViewBag.Title = "Index";
@@ -19,10 +19,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Gender)
@@ -31,7 +28,10 @@
             @Html.DisplayNameFor(model => model.BirthDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClubSeniority)
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
 
@@ -42,10 +42,7 @@
 {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Gender)
@@ -54,7 +51,10 @@
             @Html.DisplayFor(modelItem => item.BirthDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ClubSeniority)
+            @Html.DisplayFor(modelItem => item.RegistrationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
         </td>
 
         <td>

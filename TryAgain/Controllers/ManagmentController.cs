@@ -19,12 +19,9 @@ namespace TryAgain.Controllers
         // GET: Managment
         public ActionResult Index()
         {
-            string strIP = db.getIP();
-           
+
             // TODO: getting the data fo the current user
 
-            // getting the ip data of the current user 
-            ViewData["geoIP"] = strIP;
 
             return View(db._posts.ToList());
         }
@@ -42,7 +39,7 @@ namespace TryAgain.Controllers
             {
                 return HttpNotFound();
             }
-           
+
             return View(lsComment);
         }
 
@@ -131,10 +128,10 @@ namespace TryAgain.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Post post = db._posts.Find(id);
-            List<Comment> comm = db._comments.Where((item) =>(item.PostID == id)).ToList();
+            List<Comment> comm = db._comments.Where((item) => (item.PostID == id)).ToList();
 
             db._comments.RemoveRange(comm);
-      
+
             db._posts.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");

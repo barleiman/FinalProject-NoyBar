@@ -1,11 +1,5 @@
 ﻿
 
-/*205634645, 312497720*/
-
-/*------------------------------
-=BASIC SETUP
-------------------------------*/
-
 /* Makeshift CSS Reset */
 * {
     margin: 0;
@@ -49,11 +43,6 @@ p {
     text-shadow: 2px 2px #DDDDDD;
 }
 
- #map {
-    height: 400px;
-    width: 100%;
-}
-
 /*------------------------------
 =RSS  
 ------------------------------*/
@@ -67,13 +56,12 @@ p {
     transition: all 2s ease-in-out;
 }
 
-.navbar-collapse div:hover, .navbar-collapse div.hover_effect {
-    -webkit-transform: rotate(720deg) scale(2,2);
-    -moz-transform: rotate(720deg) scale(2,2);
-    -ms-transform: rotate(720deg) scale(2,2);
-    transform: rotate(720deg) scale(2,2);
+    .navbar-collapse div:hover, .navbar-collapse div.hover_effect {
+        -webkit-transform: rotate(720deg) scale(2,2);
+        -moz-transform: rotate(720deg) scale(2,2);
+        -ms-transform: rotate(720deg) scale(2,2);
+        transform: rotate(720deg) scale(2,2);
     }
-
 
 
 #content {
@@ -93,43 +81,43 @@ nav {
     background: url("../images/nav_background.png");
 }
 
-nav ul {
-    margin: 0 auto;
-    width: 940px;
-    list-style: none;
-}
-
-nav ul li {
-    float: left;
-}
-
-
-
-nav ul li a {
-    display: block;
-    margin-right: 20px;
-    width: 140px;
-    font-size: 14px;
-    line-height: 44px;
-    text-align: center;
-    text-decoration: none;
-    color: #777;
-}
-
-    nav ul li a:hover {
-        color: #fff;
+    nav ul {
+        margin: 0 auto;
+        width: 940px;
+        list-style: none;
     }
 
-nav ul li.nav navbar-nav a {
-    color: #fff;
-}
+        nav ul li {
+            float: left;
+        }
 
-nav ul li.subscribe a {
-    margin-left: 22px;
-    padding-left: 33px;
-    text-align: left;
-    background: url("../images/rss.png") left center no-repeat;
-}
+
+
+            nav ul li a {
+                display: block;
+                margin-right: 20px;
+                width: 140px;
+                font-size: 14px;
+                line-height: 44px;
+                text-align: center;
+                text-decoration: none;
+                color: #777;
+            }
+
+                nav ul li a:hover {
+                    color: #fff;
+                }
+
+            nav ul li.nav navbar-nav a {
+                color: #fff;
+            }
+
+            nav ul li.subscribe a {
+                margin-left: 22px;
+                padding-left: 33px;
+                text-align: left;
+                background: url("../images/rss.png") left center no-repeat;
+            }
 
 
 /*------------------------------
@@ -140,7 +128,6 @@ nav ul li.subscribe a {
     position: relative;
     margin-top: 66px;
     padding: 44px;
-
     background: linear-gradient(0,#467612,#85b111,#b2db10);
     /* Background-size not implemented yet */
     -webkit-background-size: 100%;
@@ -186,7 +173,7 @@ nav ul li.subscribe a {
 
 #mainContent {
     display: table-cell;
-   /*padding-right: 22px;*/
+    /*padding-right: 22px;*/
     width: 80%;
 }
 
@@ -203,7 +190,8 @@ aside {
     /* width: 100%;
     /* height: 100%; 
 }
-*/ 
+*/
+
 .page-content {
     display: block;
     width: inherit;
@@ -229,6 +217,8 @@ aside section {
     font-size: 14px;
     font-style: italic;
     color: #777;
+    column-count: 2;
+    column-gap: 15px;
 }
 
     .blogPost header p a:hover, .blogcomment header p a:hover {
@@ -267,36 +257,36 @@ aside section {
     border-top: 1px solid #d7d7d7;
 }
 
-#comments article {
-display: table;
-padding: 22px;
-}
+    #comments article {
+        display: table;
+        padding: 22px;
+    }
 
-#comments article:nth-child(odd) {
-    padding: 21px;
-    background: #E3E3E3;
-    border: 1px solid #d7d7d7;
-    -moz-border-radius: 11px;
-    -webkit-border-radius: 11px;
-}
+        #comments article:nth-child(odd) {
+            padding: 21px;
+            background: #E3E3E3;
+            border: 1px solid #d7d7d7;
+            -moz-border-radius: 11px;
+            -webkit-border-radius: 11px;
+        }
 
-#comments article header {
+        #comments article header {
             display: table-cell;
             width: 220px;
             padding-right: 22px;
         }
 
-#comments article header a {
+            #comments article header a {
                 display: block;
                 font-weight: bold;
                 color: #000;
             }
 
-#comments article header a:hover {
-    text-decoration: none;
-}
+                #comments article header a:hover {
+                    text-decoration: none;
+                }
 
-#comments article p {
+        #comments article p {
             padding: 0;
         }
 
@@ -313,40 +303,40 @@ form {
     border-top: 1px solid #d7d7d7;
 }
 
-form p {
-    display: table;
-    margin-bottom: 22px;
-    padding: 0 22px;
-  }
+    form p {
+        display: table;
+        margin-bottom: 22px;
+        padding: 0 22px;
+    }
 
- form label {
-    display: table-cell;
-    width: 140px;
-    padding-right: 20px;
-    text-align: right;
-    font-weight: bold;
-vertical-align: top;
+    form label {
+        display: table-cell;
+        width: 140px;
+        padding-right: 20px;
+        text-align: right;
+        font-weight: bold;
+        vertical-align: top;
     }
 
 #searchSample {
     display: block;
 }
 
-    
+
 form input[type="text"], form input[type="email"], form input[type="url"] {
-        width: 300px;
-        height: 20px;
-    }
+    width: 300px;
+    height: 20px;
+}
 
 form textarea {
     width: 300px;
     height: 100px;
-/*    border: 1px solid #d7d7d7;*/
+    /*    border: 1px solid #d7d7d7;*/
 }
 
 form input[type="submit"] {
     margin-left: 162px;
-    }
+}
 
 
 
@@ -360,45 +350,45 @@ footer {
     background: #222;
 }
 
-footer div {
-    display: table;
-    margin: 0 auto;
-    padding: 44px 0;
-    width: 940px;
-    color: #777;
-}
-
-footer div section {
-    display: table-cell;
-    width: 300px;
-}
-
-footer div #about, footer div #blogroll {
-    padding-right: 20px;
-}
-
-footer h3 {
-    color: #FFF;
-}
-
-footer a {
-    color: #999;
-}
-
-footer a:hover {
-    color: #FFF;
-    text-decoration: none;
-}
-
-footer ul {
-    margin: 0 0 0 40px;
-    list-style: square;
-    color: #565656;
+    footer div {
+        display: table;
+        margin: 0 auto;
+        padding: 44px 0;
+        width: 940px;
+        color: #777;
     }
 
-footer ul li a {
-    display: block;
-}
+        footer div section {
+            display: table-cell;
+            width: 300px;
+        }
+
+        footer div #about, footer div #blogroll {
+            padding-right: 20px;
+        }
+
+    footer h3 {
+        color: #FFF;
+    }
+
+    footer a {
+        color: #999;
+    }
+
+        footer a:hover {
+            color: #FFF;
+            text-decoration: none;
+        }
+
+    footer ul {
+        margin: 0 0 0 40px;
+        list-style: square;
+        color: #565656;
+    }
+
+        footer ul li a {
+            display: block;
+        }
 
 
 /*------------------------------ 
@@ -427,4 +417,21 @@ footer ul li a {
     justify-content: space-around;
     position: relative;
     color: black;
+}
+
+.demo-card-square.mdl-card {
+    width: 400px;
+    height: 450px;
+    text-align: center;
+    align-content: center;
+    margin: auto;
+}
+
+.demo-card-square > .mdl-card__title {
+    color: #fff;
+}
+
+.LoginForm {
+    text-align: center;
+    align-content: center;
 }

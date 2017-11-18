@@ -18,13 +18,10 @@ namespace TryAgain.Controllers
         // GET: FansClub
         public ActionResult Index()
         {
-            string strIP = db.getIP();
 
             // TODO: getting the data fo the current user
 
-            // getting the ip data of the current user 
-            ViewData["geoIP"] = strIP;
-            return View(db._Fans.ToList());
+            return View(db._users.ToList());
         }
 
         // GET: FansClub/Details/5
@@ -34,7 +31,7 @@ namespace TryAgain.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fan fan = db._Fans.Find(id);
+            User fan = db._users.Find(id);
             if (fan == null)
             {
                 return HttpNotFound();
@@ -53,10 +50,12 @@ namespace TryAgain.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,UserName,Password,FirstName,LastName,Gender,BirthDate,ClubSeniority,FanAuthority")] Fan fan)
+        public ActionResult Create([Bind(Include = "ID,UserName,Password,FirstName,LastName,Gender,BirthDate,Email,SiteAddr,RegistrationDate,FanAuthority")] User fan)
         {
             fan.RegistrationDate = DateTime.Now;
-            fan.FanAuthority = Fan.Authority.Fan;
+            fan.FanAuthority = Models.User.Authority.Fan;
+            fan.UserName = fan.FirstName + "  " + fan.LastName;
+
 
             if (!ModelState.IsValid)
             {
@@ -67,7 +66,7 @@ namespace TryAgain.Controllers
             }
             if (ModelState.IsValid)
             {
-                db._Fans.Add(fan);
+                db._users.Add(fan);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -82,7 +81,7 @@ namespace TryAgain.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fan fan = db._Fans.Find(id);
+            User fan = db._users.Find(id);
             if (fan == null)
             {
                 return HttpNotFound();
@@ -95,8 +94,11 @@ namespace TryAgain.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,UserName,Password,FirstName,LastName,Gender,BirthDate,ClubSeniority")] Fan fan)
+        public ActionResult Edit([Bind(Include = "ID,UserName,Password,FirstName,LastName,Gender,BirthDate,Email,SiteAddr,RegistrationDate,FanAuthority")] User fan)
         {
+            fan.UserName = fan.FirstName + "  " + fan.LastName;
+
+
             if (ModelState.IsValid)
             {
                 db.Entry(fan).State = EntityState.Modified;
@@ -113,7 +115,7 @@ namespace TryAgain.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fan fan = db._Fans.Find(id);
+            User fan = db._users.Find(id);
             if (fan == null)
             {
                 return HttpNotFound();
@@ -126,8 +128,8 @@ namespace TryAgain.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Fan fan = db._Fans.Find(id);
-            db._Fans.Remove(fan);
+            User fan = db._users.Find(id);
+            db._users.Remove(fan);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

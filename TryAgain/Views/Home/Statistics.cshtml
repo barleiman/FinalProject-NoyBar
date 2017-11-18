@@ -1,0 +1,159 @@
+﻿@using System.Web.Helpers;
+@using System.Runtime.Serialization
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<link href="@Url.Content("~/Content/charts.css")" rel="stylesheet" type="text/css" />
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+
+@{
+    var jss = new System.Web.Script.Serialization.JavaScriptSerializer();
+    var rateJson = jss.Serialize(ViewData["RateData"]);
+}
+
+<p id="demo"></p>
+
+<p id="barTitle"></p>
+<svg class="barChart"></svg>
+
+<br />
+
+
+<script>
+
+
+    var Bardata =  @Html.Raw(Json.Encode(ViewData["RateData"]));
+    document.getElementById("demo").innerText = Bardata;
+    document.getElementById("barTitle").innerText = "The number of post according to the rate!!";
+
+
+    var w = 100, h = 150;
+
+    var chart = d3.select(".barChart")
+        .attr("class", "chart")
+        .attr("width", w * Bardata.length)
+        .attr("height", h)
+        .style('background', '#C9D7D6');
+
+    var x = d3.scale.linear()
+        .domain([0, 1])
+        .range([0, w]);
+
+    var y = d3.scale.linear()
+        .domain([0, 50])
+        .rangeRound([0, h]); //rangeRound is used for antialiasing
+
+    // x and y are the lower-left position of the bar
+    // width is the width of the bar
+    // height is the height of the bar
+    // for crisp edges use -.5 (antialiasing)
+    chart.selectAll("rect")
+        .data(Bardata)
+        .enter().append("rect")
+        .attr("x", function (d, i) { return x(i) - .5; })
+        .attr("y", function (d) { return h - y(d) - .5; })
+        .attr("width", w)
+        .attr("height", function (d) { return y(d); })
+        .text(function (d) { return (d); });
+
+    // horizontal line for the x-axis
+    chart.append("line")
+        .attr("x1", 0)
+        .attr("x2", w * Bardata.length)
+        .attr("y1", h - .5)
+        .attr("y2", h - .5)
+        .style("stroke", "#000");
+
+
+</script>
+
+<p id="LineTitle"></p>
+
+<div id="lineChart"></div>
+<script>
+
+    var arrData = JSON.parse( @Html.Raw(Json.Encode(ViewData["LineData"])));
+
+
+    document.getElementById("LineTitle").innerText = "The number of post according too month";
+
+
+    var margin = { top: 20, right: 20, bottom: 30, left: 50 },
+        width = 600 - margin.left - margin.right,
+        height = 300 - margin.top - margin.bottom;
+
+   // var parseDate = d3.time.format("%m/%d/%Y").parse;
+    var parseDate = d3.time.format("%Y-%m-%d").parse;
+
+
+    var svg = d3.select("#lineChart").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        .style('background', 'black');
+
+
+    var x = d3.time.scale()
+        .range([0, width])
+
+    var y = d3.scale.linear()
+        .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+    var line = d3.svg.line()
+        .x(function (d) { return x(d.date); })
+        .y(function (d) { return y(d.close); });
+
+
+    var data = arrData.map(function (d) {
+        return {
+
+            date: parseDate(d.slice(0, 10)),
+            close: d.slice(11, d.length)
+        };
+
+    });
+
+
+    x.domain(d3.extent(data, function (d) { return d.date; }));
+    y.domain(d3.extent(data, function (d) { return d.close; }));
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Post number");
+
+    svg.append("path")
+        .datum(data)
+        .attr("class", "line")
+        .attr("d", line);
+
+
+
+</script>
+

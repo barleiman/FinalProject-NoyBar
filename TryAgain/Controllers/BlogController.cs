@@ -31,7 +31,7 @@ namespace TryAgain.Controllers
             if (id == null)
             {
                 topPosts = db.TopPosts(maxDaysBack);
-                if (topPosts != null && topPosts.Count() >0)
+                if (topPosts != null && topPosts.Count() > 0)
                 {
                     return View(topPosts.ElementAt(0));
                 }
@@ -99,7 +99,7 @@ namespace TryAgain.Controllers
                 }
                 post.postRate = ((double)calcRate / (post.Comments.Count()));
 
-                return RedirectToAction("Index", "Blog",new { id = comment.PostID});
+                return RedirectToAction("Index", "Blog", new { id = comment.PostID });
             }
 
             return View(comment);
@@ -132,7 +132,7 @@ namespace TryAgain.Controllers
             {
 
                 db.Entry(comment).State = EntityState.Modified;
-                
+
 
                 Post post = db._posts.Find(comment.PostID);
                 double calcRate = 0;
@@ -183,7 +183,7 @@ namespace TryAgain.Controllers
                 calcRate += item.givenRate;
             }
 
-            post.postRate = ((double)calcRate/ (post.Comments.Count()));
+            post.postRate = ((double)calcRate / (post.Comments.Count()));
 
             db._comments.Remove(comment);
             db.SaveChanges();
@@ -199,6 +199,6 @@ namespace TryAgain.Controllers
             base.Dispose(disposing);
         }
 
-      
+
     }
 }

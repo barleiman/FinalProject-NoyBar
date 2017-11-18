@@ -1,38 +1,89 @@
-﻿
+﻿@using TryAgain.Models
+@model LoginViewModel
+
+
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
+<div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <section class="mdc-card__primary">
+        <h4 class="mdc-card__subtitle">Login</h4>
+    </section>
+    <section id="loginForm">
+     
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "mdl-textfield__input" , @type = "text" ,@id = "username" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        @Html.PasswordFor(m => m.Password, new { @class = "mdl-textfield__input" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+        <div class="form-group">
+            <input type="submit" value="Login" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" />
+
+<!--        <button type="button" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" onclick="location.href='@Url.Action("Register", "Home")'">
+                sign in
+            </button>
+    -->
+            <button type="button" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" onclick="location.href='@Url.Action("Index", "Managment")'">
+                Cancel
+            </button>
+        </div>
+     
+    </section>
+</div>
+}
+
+<!--
 <div class="demo-card-square mdl-card mdl-shadow--2dp">
     <section class="mdc-card__primary">
         <h4 class="mdc-card__subtitle">Login</h4>
     </section>
     <section class="mdc-card__supporting-text">
         <form>
-
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="username"><span class="highlight" id="username"></span><span class="bar"></span>
-                <label class="mdl-textfield__label" for="username">UserName</label>
+            <div class="form-group">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="username"><span class="highlight" id="usernameSpan"></span><span class="bar"></span>
+                    <label class="mdl-textfield__label" for="username">UserName</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="password" id="password"><span class="highlight" id="passwordSpan"></span><span class="bar"></span>
+                    <label class="mdl-textfield__label" for="password">password</label>
+                </div>
             </div>
 
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="password"><span class="highlight" id="username"></span><span class="bar"></span>
-                <label class="mdl-textfield__label" for="password">password</label>
-            </div>
-            </br>
-            <button type="button" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" onclick="validate()">
-                Login
-           </button>
-            <p>New User?</p>
-            <button type="button" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" onclick="location.href='@Url.Action("Register", "Home")'">
-                signin
+            <div class="form-group">
+                <input type="submit" value="Login" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" />
+                <button type="button" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" onclick="location.href='@Url.Action("Login", "Home",new object {})'">
+                    login2
                 </button>
-            <button type="button" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" onclick="location.href='@Url.Action("Index", "Managment")'">
-                Cancel
-            </button>
+              
+                <button type="button" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" onclick="location.href='@Url.Action("Register", "Home")'">
+                    sign in
+                </button>
+            
+                <button type="button" class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect" onclick="location.href='@Url.Action("Index", "Managment")'">
+                    Cancel
+                </button>
+            </div>
         </form>
     </section>
-  
 </div>
+    -->

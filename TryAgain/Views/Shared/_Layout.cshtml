@@ -14,17 +14,19 @@
 
     <header>
         <h1>Ha-Blog Shel Shauli</h1>
+        @Html.Partial("_LoginPartial")
+
     </header>
 
     <div class="container">
         <div class="navbar-collapse collapse">
             <nav>
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Fans Club", "Index", "FansClub")</li>
                     <li>@Html.ActionLink("Managment", "Index", "Managment")</li>
+                    <li>@Html.ActionLink("Fans Club", "Index", "FansClub")</li>
                     <li>@Html.ActionLink("Blog", "Index", "Lead Posts")</li>
-                    <li>@Html.ActionLink("Statistics", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Statistics", "Statistics", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li class="subscribe">
                         <div class="hover">
                             <a href="#">Subscribe via. RSS</a>
@@ -43,7 +45,6 @@
             <h3>Have fun in shauli's Fan Club</h3>
         </header>
         <p>The best Fans' blog of shauli fans in the world!!!</p>
-        <p>hello from: @Html.Raw(Json.Encode( ViewData["geoIP"]))</p>
         <img src="../../images/intro_flower.png"  />
     </section>
 

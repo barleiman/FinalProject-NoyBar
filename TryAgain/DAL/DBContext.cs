@@ -13,8 +13,8 @@ namespace TryAgain.DAL
     public class DBContext : DbContext
     {
         public DbSet<Post> _posts { get; set; }
-        public DbSet<Fan> _Fans { get; set; }
         public DbSet<Comment> _comments { get; set; }
+        public DbSet<User> _users { get; set; }
 
         /// <summary>
         /// Query for the top posts on the page
@@ -38,9 +38,9 @@ namespace TryAgain.DAL
             // אחרי זה עושים בסוגריים את הביטוי כאשר חייב לציין קודם ערך שייצג את השורה: לדוגמא 
             //(x => ())
             //X מייצג את השורות ואז ניתן לבדוק לפי הערכים של אותה שורה כמו תאריך הפוסט/דירוג הפוסט וכו
-            List<Post> topPosts = lstPosts.Where(ps => (ps.postRate > avgPostRate )).ToList();
+            List<Post> topPosts = lstPosts.Where(ps => (ps.postRate > avgPostRate)).ToList();
 
-            
+
             return topPosts;
         }
 
@@ -50,8 +50,8 @@ namespace TryAgain.DAL
         /// <returns></returns>
         public string getIP()
         {
-            
-             string results = "";
+
+            string results = "";
 
             try
             {
@@ -73,9 +73,9 @@ namespace TryAgain.DAL
             {
                 results = ex.Message + " web service failed";
             }
-            
-            return results; 
-           
+
+            return results;
+
         }
 
         public List<Post> FindPost(DateTime postDate, string TitleWord, string author)

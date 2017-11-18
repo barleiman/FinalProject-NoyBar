@@ -7,11 +7,12 @@ using System.Web;
 
 namespace TryAgain.Models
 {
-    public class User 
+    public class User
     {
         static int countIDs = 0;
 
-        public User()        {
+        public User()
+        {
             this.ID = countIDs;
             countIDs++;
         }
@@ -69,4 +70,17 @@ namespace TryAgain.Models
         public string SiteAddr { get; set; }
     }
 
+    public class LoginViewModel
+    {
+        [Required]
+        [Display(Name = "Email")]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+    }
 }
