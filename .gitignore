@@ -20,3 +20,8 @@
 *.dll
 *.config
 *.cache
+*.ide
+*.ide-shm
+*.ide-wal
+.vs/TryAgain/v15/.suo
+*.ide
