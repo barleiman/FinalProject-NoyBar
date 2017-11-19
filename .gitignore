@@ -18,3 +18,5 @@
 *.resources
 *.resx
 *.dll
+*.config
+*.cache

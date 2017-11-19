@@ -1,4 +1,4 @@
-﻿@model TryAgain.Models.User
+﻿﻿@model TryAgain.Models.User
 
 @{
     ViewBag.Title = "Details";
@@ -11,19 +11,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.UserName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.UserName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LastName)
+            @Html.DisplayFor(model => model.Email)
         </dd>
 
         <dt>
@@ -43,11 +43,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ClubSeniority)
+            @Html.DisplayNameFor(model => model.SiteAddr)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ClubSeniority)
+            @Html.DisplayFor(model => model.SiteAddr)
         </dd>
 
     </dl>
