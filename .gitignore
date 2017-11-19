@@ -35,3 +35,8 @@
 *.cache
 *.dll
 *.pdb
+*.config
+.vs/TryAgain/v15/.suo
+*.ide-shm
+*.pdb
+*.cache

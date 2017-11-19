@@ -97,12 +97,9 @@
         </div>
         <!--the side options-->
         <aside class="side_bar">
-<<<<<<< HEAD
+
             @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "searchForm", @class = "navbar-right" }))
             {
-=======
-           
->>>>>>> 1baaa294032547c1b5aae19588c77c71fa1b514e
                 <h4>   search   </h4>
                 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                     <div class="mdl-tabs__tab-bar">
@@ -112,58 +109,53 @@
 
                     <div class="mdl-tabs__panel is-active" id="scroll-tab-1">
                         <section>
-<<<<<<< HEAD
-                            <form>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input class="mdl-textfield__input" type="text" id="searchSample">
-=======
                           @using (Html.BeginForm("SearchPost", "Home", FormMethod.Post, new { id = "searchPostForm", @class = "navbar-right"}) )
                           {
                             @Html.AntiForgeryToken()
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input class="mdl-textfield__input" type="text" id="searchSample Ptitle" onchange="changePDate()" >
->>>>>>> 1baaa294032547c1b5aae19588c77c71fa1b514e
                                     <label class="mdl-textfield__label" for="searchSample"> Post title</label>
                                 </div>
 
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-<<<<<<< HEAD
+
                                     <input class="mdl-textfield__input" type="text" id="searchSample">
-=======
+
                                     <input class="mdl-textfield__input" type="text" id="searchSample Pauthor" onchange="changePDate()" >
->>>>>>> 1baaa294032547c1b5aae19588c77c71fa1b514e
+
                                     <label class="mdl-textfield__label" for="searchSample">Post author</label>
                                 </div>
 
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-<<<<<<< HEAD
+
                                     <input class="mdl-textfield__input" type="date" id="searchSample">
-=======
+
                                     <input class="mdl-textfield__input" type="datetime" id="searchSample Pdate" onchange="changePDate()" >
->>>>>>> 1baaa294032547c1b5aae19588c77c71fa1b514e
+
                                     <label class="mdl-textfield__label" for="searchSample"> Post date</label>
                                 </div>
                                 <br />
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-<<<<<<< HEAD
+
                                     <button class="mdl-button mdl-js-button" id="searchSample" onclick="serchPost()">
                                         search
                                     </button>
                                 </div>
-                            </form>
-=======
+                                <div>
                                     <button class="mdl-button mdl-js-button" id="searchSample Psubmit" disabled onclick="javascript:document.getElementById('searchPostForm').submit()">
                                         search
                                     </button>
                                 </div>
                          
                             }
->>>>>>> 1baaa294032547c1b5aae19588c77c71fa1b514e
+
                         </section>
                     </div>
                     <div class="mdl-tabs__panel" id="scroll-tab-2">
                         <section>
-<<<<<<< HEAD
+
                             <form>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input class="mdl-textfield__input" type="text" id="searchSample">
@@ -182,7 +174,7 @@
                                 <br />
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <button class="mdl-button mdl-js-button" id="searchSample" onclick="serchComment()">
-=======
+
                                 @using (Html.BeginForm("SearchComment", "Home", FormMethod.Post, new { id = "searchCommentForm", @class = "navbar-right" }))
                                 {
                                     @Html.AntiForgeryToken()
@@ -204,25 +196,18 @@
                                 <br />
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <button class="mdl-button mdl-js-button" id="searchSample Csubmit" disabled onclick="javascript:document.getElementById('searchCommentForm').submit()">
->>>>>>> 1baaa294032547c1b5aae19588c77c71fa1b514e
                                         search
                                     </button>
 
                                 </div>
                             </form>
-<<<<<<< HEAD
-=======
                                 }
->>>>>>> 1baaa294032547c1b5aae19588c77c71fa1b514e
                         </section>
                     </div>
 
                 </div>
-<<<<<<< HEAD
-            }
-=======
 
->>>>>>> 1baaa294032547c1b5aae19588c77c71fa1b514e
+            }
         </aside>
 
         <!-- Page footer -->
