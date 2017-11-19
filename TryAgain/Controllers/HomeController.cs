@@ -93,7 +93,7 @@ namespace TryAgain.Controllers
                 else { ViewData["Error"] = "The email already exist"; ; }
             }
 
-          
+
             // If we got this far, something failed, redisplay form
             return View(model);
         }
@@ -126,7 +126,8 @@ namespace TryAgain.Controllers
                 {
                     ViewModelBase.logedonUser = fans.First();
                 }
-                else {
+                else
+                {
                     ViewData["loginError"] = "Wrong user or password";
                     return RedirectToAction("Login", "Home");
                 }
@@ -138,6 +139,20 @@ namespace TryAgain.Controllers
             return View(model);
         }
 
+
+        // POST: /Home/LogOff
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            // AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            ViewModelBase.logedonUser = null;
+
+            return RedirectToAction("Index", "Managment");
+        }
+
+        //
 
         // GET: Home/Details/5
         public ActionResult Details(int id)

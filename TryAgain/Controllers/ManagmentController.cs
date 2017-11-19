@@ -71,7 +71,7 @@ namespace TryAgain.Controllers
             {
                 post.PostDate = DateTime.Now.Date;
                 post.postRate = 0;
-                post.postUser =  ViewModelBase.logedonUser;
+                post.postUser = ViewModelBase.logedonUser;
 
                 db.Entry(post.postUser).State = EntityState.Unchanged;
 
