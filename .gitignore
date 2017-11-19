@@ -25,3 +25,13 @@
 *.ide-wal
 .vs/TryAgain/v15/.suo
 *.ide
+.vs/TryAgain/v15/.suo
+.vs/TryAgain/v15/sqlite3/storage.ide
+*.ide
+*.ide-shm
+*.ide-wal
+*.dll
+*.pdb
+*.cache
+*.dll
+*.pdb
