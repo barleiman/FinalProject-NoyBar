@@ -54,7 +54,7 @@
                     if (ViewModelBase.logedonUser!=null && ViewModelBase.logedonUser.Email.Equals(comm.commentUser.Email) && ViewModelBase.logedonUser.UserName.Equals(comm.commentUser.UserName))
                     {
                     <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete", "Blog", new { id = comm.CommentID })'">Delete comment</button>
-                        }
+                        
                     }
         }
     }

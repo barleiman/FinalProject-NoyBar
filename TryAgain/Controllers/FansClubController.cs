@@ -27,7 +27,7 @@ namespace TryAgain.Controllers
         // GET: FansClub/Details/5
         public ActionResult Details(string email)
         {
-            if (email == null || email != string.Empty)
+            if (email == null || email == string.Empty)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -77,7 +77,7 @@ namespace TryAgain.Controllers
         // GET: FansClub/Edit/5
         public ActionResult Edit(string email)
         {
-            if (email == null || email != string.Empty)
+            if (email == null || email == string.Empty)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -111,7 +111,7 @@ namespace TryAgain.Controllers
         // GET: FansClub/Delete/5
         public ActionResult Delete(string email)
         {
-            if (email == null || email != string.Empty)
+            if (email == null || email == string.Empty)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

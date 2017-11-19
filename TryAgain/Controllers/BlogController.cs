@@ -91,8 +91,8 @@ namespace TryAgain.Controllers
                 comment.commentUser = ViewModelBase.logedonUser;
                 post.Comments.Add(comment);
 
-                db._comments.Add(comment);
                 db.Entry(comment.commentUser).State = EntityState.Unchanged;
+                db._comments.Add(comment);
                 db.SaveChanges();
 
                 double calcRate = 0;

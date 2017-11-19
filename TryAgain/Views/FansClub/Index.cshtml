@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TryAgain.Models.User>
+﻿@using TryAgain.Models
+@model IEnumerable<TryAgain.Models.User>
 
 @{
     ViewBag.Title = "Index";
@@ -57,10 +58,16 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
 
+       
+    </tr>
+    <tr>
         <td>
-            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "FansClub", new { id=item.Email })'">Edit user details</button>
-            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Details", "FansClub", new { id=item.Email })'">Display user details</button>
-            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete", "FansClub", new { id=item.Email })'">Delete user </button>
+            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Details", "FansClub", new { email=item.Email })'">Display user details</button>
+            @if ((ViewModelBase.logedonUser != null && ViewModelBase.logedonUser.Email.Equals(item.Email) && ViewModelBase.logedonUser.UserName.Equals(item.UserName)) ||   ViewModelBase.logedonUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin))
+            {
+                <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "FansClub", new { email = item.Email })'">Edit user details</button>
+                <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete", "FansClub", new { email = item.Email })'">Delete user </button>
+            }
         </td>
     </tr>
 }

@@ -351,7 +351,7 @@ footer {
 }
 
     footer div {
-        display: table;
+       /* display: table;*/
         margin: 0 auto;
         padding: 44px 0;
         width: 940px;
@@ -359,7 +359,7 @@ footer {
     }
 
         footer div section {
-            display: table-cell;
+          /*  display: table-cell;*/
             width: 300px;
         }
 
@@ -437,5 +437,5 @@ footer {
 }
  #map {
     height: 200px;
-    width: 100%;
+    width: 70%;
 }
