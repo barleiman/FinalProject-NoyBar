@@ -19,3 +19,37 @@
 <address>
     hello from: @Html.Raw(Json.Encode(ViewData["geoIP"]))
 </address>
+
+ <!--map content-->
+<div class="map-content" id="map">
+    <script>
+        function initMap() {
+        }
+    </script>
+</div>
+
+
+<script>
+    function initMap() {
+                        var uluru = { lat: 32.049235, lng: 34.805067 };
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 4,
+                            center: uluru
+                        });
+                        var marker = new google.maps.Marker({
+                            position: uluru,
+                            map: map
+                        });
+                    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGePuw7jpoi3kEDtVm2Pz_CfxcvuBC28U&callback=initMap">
+</script>
+<canvas id="myCanvas" width="500" height="100"></canvas>
+
+<script>
+                    var c = document.getElementById("myCanvas");
+                    var ctx = c.getContext("2d");
+                    ctx.font = "30px Alef";
+                    ctx.strokeText("Thank you for visiting. Shauli. or Shaul.", 10, 50);
+</script>

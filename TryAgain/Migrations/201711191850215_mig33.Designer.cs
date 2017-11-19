@@ -7,13 +7,13 @@ namespace TryAgain.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class loginmig : IMigrationMetadata
+    public sealed partial class mig33 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(loginmig));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(mig33));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711182223587_loginmig"; }
+            get { return "201711191850215_mig33"; }
         }
         
         string IMigrationMetadata.Source

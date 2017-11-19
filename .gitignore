@@ -13,3 +13,8 @@
 *.ide
 *.ide-shm
 .vs/TryAgain/v15/.suo
+*.csproj
+*.pdb
+*.resources
+*.resx
+*.dll
