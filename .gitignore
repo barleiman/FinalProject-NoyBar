@@ -3,3 +3,13 @@
 *.config
 *.cache
 *.txt
+*.config
+*.dll
+*.cache
+*.txt
+*.pdb
+*.ide-wal
+*.ide-shm
+*.ide
+*.ide-shm
+.vs/TryAgain/v15/.suo
