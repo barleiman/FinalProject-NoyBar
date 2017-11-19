@@ -68,6 +68,66 @@ namespace TryAgain.Controllers
             return View(model);
         }
 
+        //[AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult SearchPost(DateTime date, string strTitle,string author )
+        {
+            List<Post> lstp = new List<Post>();
+            DateTime currDate;
+
+         
+
+            if ((strTitle !=null && strTitle!=string.Empty) &&
+                (author != null && author != string.Empty))
+            {
+               lstp =  db.FindPost(date, strTitle, author);
+            }
+            else if((strTitle == null || strTitle == string.Empty))
+            {
+                 lstp = db.FindPost(author, date);
+            }
+            else 
+            {
+                lstp = db.FindPost(date,strTitle);
+            }
+
+            return View(lstp);
+        }
+
+        /// <summary>
+        /// Searcing the comment the user wanted
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="strTitle"></param>
+        /// <param name="freeText"></param>
+        /// <returns></returns>
+        // [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+[HttpPost]
+        public ActionResult SearchComment(DateTime date,string freeText,string commenter)
+        {
+            List<Comment> lstc = new List<Comment>();
+
+            if ((commenter != null && commenter != string.Empty) &&
+                (freeText != null && freeText != string.Empty))
+            {
+                lstc =  db.FindComments(date, freeText, commenter);
+            }
+            else if((freeText == null || freeText == string.Empty))
+            {
+                lstc = db.FindComments( date, freeText);
+            }
+            else 
+            {
+                lstc = db.FindComments(commenter,date);
+            }
+
+            return View(lstc);
+        }
+
+
+      
         //
         // POST: /Account/Register
         [HttpPost]

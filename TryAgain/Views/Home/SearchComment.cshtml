@@ -1,0 +1,48 @@
+﻿
+
+@using TryAgain.Models
+@model  IEnumerable<TryAgain.Models.Comment>
+
+@{
+    ViewBag.Title = "SearchComment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Search Comments</h4>
+<div>
+    <hr />
+    @foreach (var item in Model)
+    {
+        <article class="blogComment">
+            <header>
+                <h5> @Html.ActionLink(@Html.DisplayFor(modelitem => item.Title).ToString(), "Details", "Blog", new { id = item.CommentID }, new { id = item.CommentID })</h5>
+                <p>
+                    <b> Comment on: </b> <time datetime=@Html.DisplayFor(modelitem => item.CommentDate)>@Html.DisplayFor(modelitem => item.CommentDate)</time>
+                    <b> by: </b>  @Html.DisplayFor(modelitem => item.commentUser.UserName) <b> website: </b> @Html.DisplayFor(modelitem => item.commentUser.SiteAddr)
+                    <br />
+                    <b> Rating : </b> @Html.DisplayFor(modelitem => item.givenRate)
+                    <b>  on </b>@Html.ActionLink("this", "Index", "Blog", new { id = item.PostID }) <b>post</b>
+                </p>
+            </header>
+            <div class="post_body">
+                <p>@Html.DisplayFor(model => item.Text)</p>
+            </div>
+        </article>
+
+        if (item.commentUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin) || item.commentUser.Email.Equals(ViewModelBase.logedonUser.Email))
+        {
+            <div class="button-row">
+                <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Details", "Blog", new { id = item.CommentID })'">View comment </button>
+               
+            </div>
+
+        }
+    }
+
+</div>
+
+<div class="button-row">
+    <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Blog", new { id = Model.First().PostID })'">Go to post</button>
+</div>
+
+

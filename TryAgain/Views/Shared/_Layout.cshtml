@@ -15,7 +15,38 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script>
+    
+        function  changeCDate()
+        {
+            var z = document.getElementById("searchSample Cdate").value;
+            var x = document.getElementById("searchSample CCommenter").value;
+            var y = document.getElementById("searchSample Ctext").value;
+            if ((x == "" && y == "" && z == "") || (x == "" && z == "") || (y == "" && z == "")) {
+                document.getElementById("searchSample Csubmit").disabled  = true;
 
+            }
+            else {
+                document.getElementById("searchSample Csubmit").disabled  = false;
+            }
+        }
+
+        function changePDate()
+        {
+            var z = document.getElementById("searchSample Pdate").value;
+           
+            var x = document.getElementById("searchSample Ptitle").value;
+            var y = document.getElementById("searchSample Pauthor").value;
+
+             if ((x == "" && y == "" && z == "") || (x == "" && z == "") || (y == "" && z == "")) {
+                document.getElementById("searchSample Psubmit").disabled = true;
+
+            }
+            else {
+                document.getElementById("searchSample Psubmit").disabled = false;
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -66,8 +97,7 @@
         </div>
         <!--the side options-->
         <aside class="side_bar">
-            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "searchForm", @class = "navbar-right" }))
-            {
+           
                 <h4>   search   </h4>
                 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                     <div class="mdl-tabs__tab-bar">
@@ -77,91 +107,84 @@
 
                     <div class="mdl-tabs__panel is-active" id="scroll-tab-1">
                         <section>
-                            <form>
+                          @using (Html.BeginForm("SearchPost", "Home", FormMethod.Post, new { id = "searchPostForm", @class = "navbar-right"}) )
+                          {
+                            @Html.AntiForgeryToken()
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="searchSample">
+                                    <input class="mdl-textfield__input" type="text" id="searchSample Ptitle" onchange="changePDate()" >
                                     <label class="mdl-textfield__label" for="searchSample"> Post title</label>
                                 </div>
 
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="searchSample">
+                                    <input class="mdl-textfield__input" type="text" id="searchSample Pauthor" onchange="changePDate()" >
                                     <label class="mdl-textfield__label" for="searchSample">Post author</label>
                                 </div>
 
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="date" id="searchSample">
+                                    <input class="mdl-textfield__input" type="datetime" id="searchSample Pdate" onchange="changePDate()" >
                                     <label class="mdl-textfield__label" for="searchSample"> Post date</label>
                                 </div>
                                 <br />
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <button class="mdl-button mdl-js-button" id="searchSample" onclick="serchPost()">
+                                    <button class="mdl-button mdl-js-button" id="searchSample Psubmit" disabled onclick="javascript:document.getElementById('searchPostForm').submit()">
                                         search
                                     </button>
                                 </div>
-                            </form>
+                         
+                            }
                         </section>
                     </div>
                     <div class="mdl-tabs__panel" id="scroll-tab-2">
                         <section>
+                                @using (Html.BeginForm("SearchComment", "Home", FormMethod.Post, new { id = "searchCommentForm", @class = "navbar-right" }))
+                                {
+                                    @Html.AntiForgeryToken()
                             <form>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="searchSample">
-                                    <label class="mdl-textfield__label" for="searchSample">Fan name</label>
+                                    <input class="mdl-textfield__input" type="text" id="searchSample Commenter">
+                                    <label class="mdl-textfield__label" for="searchSample">Commenter</label>
                                 </div>
 
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="date" id="searchSample">
-                                    <label class="mdl-textfield__label" for="searchSample">Birth date</label>
+                                    <input class="mdl-textfield__input" type="text" id="searchSample text">
+                                    <label class="mdl-textfield__label" for="searchSample">Free text</label>
                                 </div>
 
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="number" id="searchSample">
-                                    <label class="mdl-textfield__label" for="searchSample">Seniority</label>
+                                    <input class="mdl-textfield__input" type="datetime" id="searchSample Cdate" onchange="changeCDate()">
+                                    <label class="mdl-textfield__label" for="searchSample">Date</label>
                                 </div>
                                 <br />
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <button class="mdl-button mdl-js-button" id="searchSample" onclick="serchComment()">
+                                    <button class="mdl-button mdl-js-button" id="searchSample Csubmit" disabled onclick="javascript:document.getElementById('searchCommentForm').submit()">
                                         search
                                     </button>
 
                                 </div>
                             </form>
+                                }
                         </section>
                     </div>
 
                 </div>
-            }
+
         </aside>
 
         <!-- Page footer -->
         <footer>
             <!--map content-->
-            <div class="map-content" id="map">
+           <!-- <div class="map-content" id="map">
                 <script>
                     function initMap() {
                     }
                 </script>
-            </div>
-        </footer>
+            </div>-->
+            <video width="320" height="240" controls>
+                <source src="..\images\song.mp4" type="video/mp4">
+                </video>
+</footer>
     </div>
 
-
-    <script>
-                    function initMap() {
-                        var uluru = { lat: -25.363, lng: 131.044 };
-                        var map = new google.maps.Map(document.getElementById('map'), {
-                            zoom: 4,
-                            center: uluru
-                        });
-                        var marker = new google.maps.Marker({
-                            position: uluru,
-                            map: map
-                        });
-                    }
-    </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGePuw7jpoi3kEDtVm2Pz_CfxcvuBC28U&callback=initMap">
-    </script>
 
 
 

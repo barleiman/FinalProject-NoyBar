@@ -242,6 +242,7 @@
     <Content Include="images\intro_background.png" />
     <Content Include="images\intro_flower.png" />
     <Content Include="images\intro_shauli.png" />
+    <Content Include="images\song.mp4" />
     <Content Include="images\nav_background.png" />
     <Content Include="images\rss.png" />
     <Content Include="images\sidebar_background.png" />
@@ -306,6 +307,8 @@
     <Content Include="Views\Blog\Edit.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Home\Logoff.cshtml" />
+    <Content Include="Views\Home\SearchPost.cshtml" />
+    <Content Include="Views\Home\SearchComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
