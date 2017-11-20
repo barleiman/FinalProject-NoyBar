@@ -7,7 +7,6 @@
     $(document).ready(function () {
         $("#Psubmit").on("click",function ()
         {
-            alert("Check");
             $('#searchPostForm').submit();
 
         })
@@ -20,7 +19,6 @@
         var z = $("#Pdate").val();
         var x = $("#Ptitle").val();
         var y = $("#Pauthor").val();
-        alert(z.toString());
         if ((x  == "" && y  == "" && z == "") || (x == "" && z == "") || (y == "" && z == "")) {
             document.getElementById("Psubmit").disabled = true;
         }

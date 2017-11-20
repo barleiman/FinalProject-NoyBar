@@ -210,6 +210,8 @@
     <Content Include="images\intro_background.png" />
     <Content Include="images\intro_flower.png" />
     <Content Include="images\intro_shauli.png" />
+    <Content Include="images\saulANDirena.mp4" />
+    <Content Include="images\SHAULI_BACK.jpg" />
     <Content Include="images\song.mp4" />
     <Content Include="images\nav_background.png" />
     <Content Include="images\rss.png" />

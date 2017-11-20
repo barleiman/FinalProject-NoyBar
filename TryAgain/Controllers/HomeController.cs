@@ -141,6 +141,10 @@ namespace TryAgain.Controllers
             {
                 lstp = db.FindComments(date, text);
             }
+            if(lstp.Count()==0)
+            {
+                lstp = new List<Comment>();
+            }
 
             return View(lstp);
         }
