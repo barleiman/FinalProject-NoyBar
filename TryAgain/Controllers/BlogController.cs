@@ -34,8 +34,13 @@ namespace TryAgain.Controllers
                 {
                     topPosts = db.recommendedPosts(ViewModelBase.logedonUser.Email);
                 }
-                Post pst = topPosts.First();
 
+                Post pst = new Post();
+                if (topPosts.Count != 0)
+                {
+                    pst = topPosts.First();
+                } 
+            
                 return View(pst);
             }
 
