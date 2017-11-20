@@ -228,6 +228,10 @@
     <Content Include="Connected Services\SunsetWebService\TryAgain.SunsetWebService.LatLonDate.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="fonts\Drawingwithmarkers.eot" />
+    <Content Include="fonts\Drawingwithmarkers.ttf" />
+    <Content Include="fonts\Drawingwithmarkers.woff" />
+    <Content Include="fonts\blogs.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

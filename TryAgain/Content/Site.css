@@ -39,14 +39,23 @@ p {
     padding-bottom: 22px;
 }
 
+/**/
+@font-face {
+    font-family: myFirstFont;
+    src: url(../fonts/Drawingwithmarkers.woff);
+}
+
+
 .mainTitle {
     text-shadow: 2px 2px #DDDDDD;
+    font-family: myFirstFont;
+    font-size:70px;
 }
 
 /*------------------------------
 =RSS  
 ------------------------------*/
-navbar-collapse transform div {
+.transform div {
     text-align: center;
     -webkit-transition: all 2s ease-in-out;
     -moz-transition: all 2s ease-in-out;
@@ -54,7 +63,7 @@ navbar-collapse transform div {
     transition: all 2s ease-in-out;
 }
 
-navbar-collapse transform hover {
+.transform div:hover, .transform div.hover_effect {
     -webkit-transform: rotate(720deg) scale(2,2);
     -moz-transform: rotate(720deg) scale(2,2);
     -ms-transform: rotate(720deg) scale(2,2);
@@ -79,43 +88,42 @@ nav {
     background: url("../images/nav_background.png");
 }
 
-    nav ul {
-        margin: 0 auto;
-        width: 940px;
-        list-style: none;
-    }
+nav ul {
+    margin: 0 auto;
+    width: 940px;
+    list-style: none;
+}
 
-        nav ul li {
-            float: left;
-        }
+nav ul li {
+    float: left;
+}
 
 
+nav ul li a {
+    display: block;
+    margin-right: 20px;
+    width: 140px;
+    font-size: 14px;
+    line-height: 44px;
+    text-align: center;
+    text-decoration: none;
+    color: #777;
+}
 
-            nav ul li a {
-                display: block;
-                margin-right: 20px;
-                width: 140px;
-                font-size: 14px;
-                line-height: 44px;
-                text-align: center;
-                text-decoration: none;
-                color: #777;
-            }
+nav ul li a:hover {
+    color: #fff;
+}
 
-                nav ul li a:hover {
-                    color: #fff;
-                }
+nav ul li.nav navbar-nav a {
+    color: #fff;
+}
 
-            nav ul li.nav navbar-nav a {
-                color: #fff;
-            }
-
-            nav ul li.subscribe a {
-                margin-left: 22px;
-                padding-left: 33px;
-                text-align: left;
-                background: url("../images/rss.png") left center no-repeat;
-            }
+/*nav ul li.subscribe a {
+    margin-left: 22px;
+    padding-left: 33px;
+    text-align: left;
+    background: url("../images/rss.png") left center no-repeat;
+}*/
 
 
 /*------------------------------
@@ -136,33 +144,33 @@ nav {
     -webkit-border-radius: 22px;
 }
 
-    #intro h2, #intro p {
-        position: relative;
-        z-index: 9999;
-        width: 436px;
-    }
+#intro h2, #intro p {
+    position: relative;
+    z-index: 9999;
+    width: 436px;
+}
 
-    #intro h2 {
-        padding: 0 0 22px 0;
-        font-weight: normal;
-        color: #fff;
-    }
+#intro h2 {
+    padding: 0 0 22px 0;
+    font-weight: normal;
+    color: #fff;
+}
 
-    #intro p {
-        padding: 0;
-        color: #d9f499;
-    }
+#intro p {
+    padding: 0;
+    color: #d9f499;
+}
 
-    #intro img {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 653px;
-        height: 100%;
-        /* Border-radius not implemented yet */
-        -moz-border-radius: 22px;
-        -webkit-border-radius: 22px;
-    }
+#intro img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 653px;
+    height: 100%;
+    /* Border-radius not implemented yet */
+    -moz-border-radius: 22px;
+    -webkit-border-radius: 22px;
+}
 
 
 /*------------------------------
