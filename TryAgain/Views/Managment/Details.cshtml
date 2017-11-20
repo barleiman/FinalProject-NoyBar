@@ -6,11 +6,6 @@
     ViewBag.Title = "Details";
 }
 
-<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
 <div>
     <hr />
 @if (!Model.Count().Equals(0))
@@ -33,15 +28,18 @@
             </div>
         </article>
 
-        if (item.commentUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin) || item.commentUser.Email.Equals(ViewModelBase.logedonUser.Email))
-        {
-        <div class="button-row">
-            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Details", "Blog", new { id = item.CommentID })'">View comment </button>
-            @if ((ViewModelBase.logedonUser.Email.Equals(item.commentUser.Email) && ViewModelBase.logedonUser.UserName.Equals(item.commentUser.UserName)) || ViewModelBase.logedonUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin))
+        if (ViewModelBase.logedonUser != null)
+        { 
+            if (item.commentUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin) || item.commentUser.Email.Equals(ViewModelBase.logedonUser.Email))
             {
-            <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "Blog", new { id = item.CommentID })'">Edit comment</button>
-            <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete", "Blog", new { id = item.CommentID })'">Delete comment</button>
+                <div class="button-row">
+                <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Details", "Blog", new { id = item.CommentID })'">View comment </button>
+                @if ((ViewModelBase.logedonUser.Email.Equals(item.commentUser.Email) && ViewModelBase.logedonUser.UserName.Equals(item.commentUser.UserName)) || ViewModelBase.logedonUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin))
+                {
+                <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "Blog", new { id = item.CommentID })'">Edit comment</button>
+                <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete", "Blog", new { id = item.CommentID })'">Delete comment</button>
             }
+          }
         </div>
 
         }

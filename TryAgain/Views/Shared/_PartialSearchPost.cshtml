@@ -1,50 +1,62 @@
 ﻿@using TryAgain.Models
-@model  TryAgain.Models.searchPost
+@model  searchPost
+
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#Psubmit").on("click",function ()
+        {
+            alert("Check");
+            $('#searchPostForm').submit();
+
+        })
+    });
+
+
+    function changePDate()
+    {
+    
+        var z = $("#Pdate").val();
+        var x = $("#Ptitle").val();
+        var y = $("#Pauthor").val();
+        alert(z.toString());
+        if ((x  == "" && y  == "" && z == "") || (x == "" && z == "") || (y == "" && z == "")) {
+            document.getElementById("Psubmit").disabled = true;
+        }
+        else {
+            document.getElementById("Psubmit").disabled = false;
+        }
+    };
+</script>
+
 
 
 @using (Html.BeginForm("SearchPost", "Home", new { date = Model.date, text = Model.Title, author = Model.author } , FormMethod.Post, new { id = "searchPostForm", @class = "navbar-right" }))
 {
     @Html.AntiForgeryToken()
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "mdl-textfield__input", id = "searchSample Ptitle", onchange = "changePDate()" } })
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "mdl-textfield__input", type = "text", id = "Ptitle", onchange = "changePDate()" } })
                        <!--<input class="mdl-textfield__input" type="text" id="searchSample Ptitle" onchange="changePDate()">--> 
                         <label class="mdl-textfield__label" for="searchSample"> Post title</label>
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        @Html.EditorFor(model => model.author, new { htmlAttributes = new { @class = "mdl-textfield__input", type = "text", id = "searchSample Pauthor", onchange = "changePDate()" } })
+                        @Html.EditorFor(model => model.author, new { htmlAttributes = new { @class = "mdl-textfield__input", type = "text",  id = "Pauthor", onchange = "changePDate()" } })
                         <!--<input class="mdl-textfield__input" type="text" id="searchSample Pauthor" onchange="changePDate()">-->
                         <label class="mdl-textfield__label" for="searchSample">Post author</label>
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        @Html.EditorFor(model => model.date, new { htmlAttributes = new { @class = "mdl-textfield__input", type = "datetime", id = "searchSample Pdate", onchange = "changePDate()" } })
+                        @Html.EditorFor(model => model.date, new { htmlAttributes = new { @class = "mdl-textfield__input", type = "datetime", id = "Pdate", onchange = "changePDate()" } })
                        <!-- <input class="mdl-textfield__input" type="datetime" id="searchSample Pdate" onchange="changePDate()">-->
                         <label class="mdl-textfield__label" for="searchSample"> Post date</label>
                     </div>
                     <br />
                     <div>
-                        <button class="mdl-button mdl-js-button" id="searchSample Psubmit" disabled onclick="javascript:document.getElementById('searchPostForm').submit()">
+                        <button class="mdl-button mdl-js-button" id="Psubmit" disabled ><!--onclick="javascript:document.getElementById('searchPostForm').submit()">-->
                             search
                         </button>
                     </div>
 
 }
-
-
-<script>
-    function changePDate() {
-        var z = document.getElementById("searchSample Pdate").value;
-
-        var x = document.getElementById("searchSample Ptitle").value;
-        var y = document.getElementById("searchSample Pauthor").value;
-
-        if ((x == "" && y == "" && z == "") || (x == "" && z == "") || (y == "" && z == "")) {
-            document.getElementById("searchSample Psubmit").disabled = true;
-
-        }
-        else {
-            document.getElementById("searchSample Psubmit").disabled = false;
-        }
-    }
-</script>

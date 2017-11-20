@@ -1,4 +1,5 @@
-﻿@model TryAgain.Models.Comment
+﻿@using TryAgain.Models
+@model TryAgain.Models.Comment
 
 @{
     ViewBag.Title = " comment";
@@ -33,11 +34,14 @@
     </div>
 </section>
 <p>
-    @if (TryAgain.Models.ViewModelBase.logedonUser.Email.Equals(Model.commentUser.Email))
+@if (ViewModelBase.logedonUser != null)
+{
+    if (ViewModelBase.logedonUser.Email.Equals(Model.commentUser.Email))
     {
         <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Edit", "Blog", new { id = Model.CommentID })'">Edit Comment</button>
         <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Delete", "Blog", new { id = Model.CommentID })'">Delete Comment</button>
     }
+}
 </p>
 <p>
     <button class="mdl-button mdl-js-button mdc-button--dense	 mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Blog" , new { id = Model.PostID })'">Go to post</button>

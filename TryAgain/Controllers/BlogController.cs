@@ -21,7 +21,7 @@ namespace TryAgain.Controllers
         // GET: Blog
         public ActionResult Index(int? id)
         {
-            List<Post> topPosts;
+            List<Post> topPosts= new List<Post>();
        
             // The default page of the blog is the most rated post
             if (id == null)

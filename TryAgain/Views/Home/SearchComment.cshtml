@@ -1,7 +1,7 @@
 ﻿
 
 @using TryAgain.Models
-@model  IEnumerable<TryAgain.Models.Comment>
+@model  IEnumerable<Comment>
 
 @{
     ViewBag.Title = "SearchComment";
@@ -9,8 +9,6 @@
 }
 
 <h4>Search Comments</h4>
-<div>
-    <hr />
 @if (!Model.Count().Equals(0))
 {
     foreach (var item in Model)
@@ -30,19 +28,20 @@
                 <p>@Html.DisplayFor(model => item.Text)</p>
             </div>
         </article>
-
-        if (item.commentUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin) || item.commentUser.Email.Equals(ViewModelBase.logedonUser.Email))
+        if (ViewModelBase.logedonUser != null)
         {
+            if (item.commentUser.FanAuthority.Equals(TryAgain.Models.User.Authority.Admin) || item.commentUser.Email.Equals(ViewModelBase.logedonUser.Email))
+            {
             <div class="button-row">
                 <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Details", "Blog", new { id = item.CommentID })'">View comment </button>
                
             </div>
 
+            }
         }
     }
-    }
-</div>
 
+}
 <div class="button-row">
     <button class="mdl-button mdl-js-button mdc-button--dense mdl-js-ripple-effect " onclick="location.href='@Url.Action("Index", "Blog", new { id = Model.First().PostID })'">Go to post</button>
 </div>

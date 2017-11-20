@@ -68,14 +68,12 @@ namespace TryAgain.Controllers
             return View(model);
         }
 
-        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult SearchPost( DateTime date, string Title,string author) 
         {
             List<Post> lstp = new List<Post>();
-            DateTime currDate;
-
+            
             
             if (( Title != null &&  Title != string.Empty) &&
                 (author != null &&  author != string.Empty))
@@ -94,39 +92,60 @@ namespace TryAgain.Controllers
             return View(lstp);
         }
 
-        /// <summary>
-        /// Searcing the comment the user wanted
-        /// </summary>
-        /// <param name="date"></param>
-        /// <param name="strTitle"></param>
-        /// <param name="freeText"></param>
-        /// <returns></returns>
-        // [AllowAnonymous]
+        /*
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult SearchComment(DateTime date, string freeText, string commenter)
+        public ActionResult SearchComment(DateTime date, string text, string commentor)
         {
             List<Comment> lstc = new List<Comment>();
             
-            if ((commenter != null && commenter != string.Empty) &&
-                (freeText != null && freeText != string.Empty))
+            if ((commentor != null && commentor != string.Empty) &&
+                (text != null && text != string.Empty))
             {
-                lstc =  db.FindComments(date, freeText, commenter);
+                lstc =  db.FindComments(date, text, commentor);
             }
-            else if((freeText == null || freeText == string.Empty))
+            else if((text != null && text != string.Empty))
             {
-                lstc = db.FindComments( date, freeText);
+                lstc = db.FindComments( date, text);
             }
-            else 
+            else if((commentor != null && commentor != string.Empty))
             {
-                lstc = db.FindComments(commenter,date);
+                lstc = db.FindComments(commentor,date);
+            }
+            else
+            {
+                lstc = db.FindComments( date,"");
             }
             
             return View(lstc);
         }
 
+    */
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult SearchComment(DateTime date, string text, string commentor)
+        {
+            List<Comment> lstp = new List<Comment>();
 
-      
+
+            if ((text != null && text != string.Empty) &&
+                (commentor != null && commentor != string.Empty))
+            {
+                lstp = db.FindComments(date, text, commentor);
+            }
+            else if ((text == null || text == string.Empty))
+            {
+                lstp = db.FindComments(commentor, date);
+            }
+            else
+            {
+                lstp = db.FindComments(date, text);
+            }
+
+            return View(lstp);
+        }
+
+
         //
         // POST: /Account/Register
         [HttpPost]
