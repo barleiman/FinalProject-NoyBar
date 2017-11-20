@@ -1,0 +1,46 @@
+﻿@using TryAgain.Models
+@model  TryAgain.Models.searchComment
+
+@using (Html.BeginForm("SearchComment", "Home", new { date = Model.date, freeText = Model.Text, commenter = Model.commentor }, FormMethod.Post, new { id = "searchCommentForm", @class = "navbar-right" }))
+{
+    @Html.AntiForgeryToken()
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.EditorFor(model => model.commentor, new { htmlAttributes = new { @class = "mdl-textfield__input", type = "text", id = "searchSample CCommenter", onchange = "changeCDate()" } })
+                   <!--<input class="mdl-textfield__input" type="text" id="searchSample CCommenter">-->
+                    <label class="mdl-textfield__label" for="searchSample">Commenter</label>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "mdl-textfield__input", id = "searchSample Ctext", onchange = "changeCDate()" } })
+                    <!--<input class="mdl-textfield__input" type="text" id="searchSample Ctext">-->
+                    <label class="mdl-textfield__label" for="searchSample">Free text</label>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.EditorFor(model => model.date, new { htmlAttributes = new { @class = "mdl-textfield__input", type = "datetime", id = "searchSample Cdate" ,onchange = "changeCDate()" } })
+                    <!--<input class="mdl-textfield__input" type="datetime" id="searchSample Cdate" onchange="changeCDate()">-->
+                    <label class="mdl-textfield__label" for="searchSample">Date</label>
+                </div>
+                                <br />
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <button class="mdl-button mdl-js-button" id="searchSample Csubmit" disabled onclick="javascript:document.getElementById('searchCommentForm').submit()">
+                                        search
+                                    </button>
+
+                                </div>
+}
+
+<script>
+    function changeCDate() {
+        var z = document.getElementById("searchSample Cdate").value;
+        var x = document.getElementById("searchSample CCommenter").value;
+        var y = document.getElementById("searchSample Ctext").value;
+        if ((x == "" && y == "" && z == "") || (x == "" && z == "") || (y == "" && z == "")) {
+            document.getElementById("searchSample Csubmit").disabled = true;
+
+        }
+        else {
+            document.getElementById("searchSample Csubmit").disabled = false;
+        }
+    }
+</script>

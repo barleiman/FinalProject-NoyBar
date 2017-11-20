@@ -21,25 +21,22 @@ namespace TryAgain.Controllers
         // GET: Blog
         public ActionResult Index(int? id)
         {
-            int maxDaysBack = 30;
-            List<Post> lsPosts = db._posts.ToList();
             List<Post> topPosts;
-            string str = db.getIP();
-
-
+       
             // The default page of the blog is the most rated post
             if (id == null)
             {
-                topPosts = db.TopPosts(maxDaysBack);
-                if (topPosts != null && topPosts.Count() > 0)
+                if (ViewModelBase.logedonUser == null)
                 {
-                    return View(topPosts.ElementAt(0));
+                    topPosts = db.popularPosts();
                 }
                 else
                 {
-                    return new HttpStatusCodeResult(HttpStatusCode.PartialContent);
+                    topPosts = db.recommendedPosts(ViewModelBase.logedonUser.Email);
                 }
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Post pst = topPosts.First();
+
+                return View(pst);
             }
 
             // getting the specific post if specified

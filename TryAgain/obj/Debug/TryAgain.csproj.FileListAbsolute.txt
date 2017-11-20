@@ -85,20 +85,10 @@ C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\Tr
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.csproj.CoreCompileInputs.cache
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.dll
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.pdb
-C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.initmig.resources
-C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.csproj.GenerateResource.Cache
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.userMig.resources
-C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.comAndPstMig.resources
-C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.loginmig.resources
-C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.loginmigNew.resources
-C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.loginmigNew1.resources
-C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.UserKey.resources
-C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.userduplicate.resources
-C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.userduplicate1.resources
 C:\Users\BarL\Desktop\לימודים\שנה ב\סמסטר ג\אפליקציות אינטרנטיות\The final project\FinalProject-NoyBar\TryAgain\bin\ApplicationInsights.config
 C:\Users\BarL\Desktop\לימודים\שנה ב\סמסטר ג\אפליקציות אינטרנטיות\The final project\FinalProject-NoyBar\TryAgain\bin\roslyn\csc.exe
 C:\Users\BarL\Desktop\לימודים\שנה ב\סמסטר ג\אפליקציות אינטרנטיות\The final project\FinalProject-NoyBar\TryAgain\bin\roslyn\csc.exe.config
@@ -193,3 +183,5 @@ C:\Users\BarL\Desktop\לימודים\שנה ב\סמסטר ג\אפליקציות 
 C:\Users\BarL\Desktop\לימודים\שנה ב\סמסטר ג\אפליקציות אינטרנטיות\The final project\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.trymig.resources
 C:\Users\BarL\Desktop\לימודים\שנה ב\סמסטר ג\אפליקציות אינטרנטיות\The final project\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.csproj.GenerateResource.Cache
 C:\Users\BarL\Desktop\לימודים\שנה ב\סמסטר ג\אפליקציות אינטרנטיות\The final project\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.mig33.resources
+C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.Migrations.finalemig.resources
+C:\Users\Noy Yizchaki\Documents\GitHub\FinalProject-NoyBar\TryAgain\obj\Debug\TryAgain.csproj.GenerateResource.Cache

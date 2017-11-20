@@ -71,27 +71,26 @@ namespace TryAgain.Controllers
         //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult SearchPost(DateTime date, string strTitle,string author )
+        public ActionResult SearchPost( DateTime date, string Title,string author) 
         {
             List<Post> lstp = new List<Post>();
             DateTime currDate;
 
-         
-
-            if ((strTitle !=null && strTitle!=string.Empty) &&
-                (author != null && author != string.Empty))
+            
+            if (( Title != null &&  Title != string.Empty) &&
+                (author != null &&  author != string.Empty))
             {
-               lstp =  db.FindPost(date, strTitle, author);
+                lstp = db.FindPost( date,  Title,author);
             }
-            else if((strTitle == null || strTitle == string.Empty))
+            else if (( Title == null || Title == string.Empty))
             {
-                 lstp = db.FindPost(author, date);
+                lstp = db.FindPost(author, date);
             }
-            else 
+            else
             {
-                lstp = db.FindPost(date,strTitle);
+                lstp = db.FindPost(date,  Title);
             }
-
+            
             return View(lstp);
         }
 
@@ -104,11 +103,11 @@ namespace TryAgain.Controllers
         /// <returns></returns>
         // [AllowAnonymous]
         [ValidateAntiForgeryToken]
-[HttpPost]
-        public ActionResult SearchComment(DateTime date,string freeText,string commenter)
+        [HttpPost]
+        public ActionResult SearchComment(DateTime date, string freeText, string commenter)
         {
             List<Comment> lstc = new List<Comment>();
-
+            
             if ((commenter != null && commenter != string.Empty) &&
                 (freeText != null && freeText != string.Empty))
             {
@@ -122,7 +121,7 @@ namespace TryAgain.Controllers
             {
                 lstc = db.FindComments(commenter,date);
             }
-
+            
             return View(lstc);
         }
 

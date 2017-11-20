@@ -59,4 +59,11 @@ namespace TryAgain.Models
         public virtual ICollection<Comment> Comments { get; set; }
 
     }
+
+    public class searchPost
+    {
+        public string author;
+        public string Title;
+        public DateTime date;
+    }
 }

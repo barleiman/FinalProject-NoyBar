@@ -8,8 +8,9 @@
 
 <h4>Search Posts</h4>
 
-
-@foreach (var item in Model)
+@if (!Model.Count().Equals(0))
+{
+foreach (var item in Model)
 {
     <section>
         <article class="blogPost">
@@ -47,4 +48,5 @@
             </div>
         }
     </section>
+}
 }

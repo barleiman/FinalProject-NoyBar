@@ -157,15 +157,36 @@ namespace TryAgain.DAL
             (from comment in _comments
              join post in _posts on comment.PostID equals post.PostID
              where comment.commentUser.Email == FanID
-             select new { comment.PostID, post.postUser.UserName } into TBL
-             group TBL by TBL.UserName into favAuthors
+             select new { comment.PostID, post.postUser.Email } into TBL
+             group TBL by TBL.Email into favAuthors
              select new { favAuthors.Key }).Take(3).ToList();
 
-            // Find the recommended posts according to authors
-            List<Post> recPosts = _posts.Where(pst => ((pst.postUser.UserName.Equals(RecommendedAuthors[1].ToString())) ||
-                                                       (pst.postUser.UserName.Equals(RecommendedAuthors[2].ToString())) ||
-                                                       (pst.postUser.UserName.Equals(RecommendedAuthors[3].ToString()))) && 
-                                                       (pst.postRate.Equals(5))).ToList();
+            List<Post> recPosts = new List<Post>();
+            if (RecommendedAuthors.Count == 3)
+            {
+                string strAuth1 = RecommendedAuthors[0].Key.ToString();
+                string strAuth2 = RecommendedAuthors[1].Key.ToString();
+                string strAuth3 = RecommendedAuthors[2].Key.ToString();
+                // Find the recommended posts according to top 3 authors
+                recPosts = _posts.Where(pst => ((pst.postUser.Email.Equals(strAuth1)) ||
+                                                           (pst.postUser.Email.Equals(strAuth2)) ||
+                                                           (pst.postUser.Email.Equals(strAuth3)) &&
+                                                           (pst.postRate.Equals(5.0)))).ToList();
+            }
+            else if(RecommendedAuthors.Count > 0)
+            {
+                string strAuth = RecommendedAuthors[0].Key.ToString();
+                // Find the recommended posts according to  best authors
+                 recPosts = _posts.Where(pst => (pst.postUser.Email.ToString().Equals(strAuth))&&
+                                                           (pst.postRate.Equals(5.0))).ToList();
+            }
+            
+            if(recPosts.Count==0)
+            {
+                // if not found the top author for the user take the most rated authors in the blog
+                 recPosts = TopPosts(30);
+            }
+            
             return recPosts;
         }
 

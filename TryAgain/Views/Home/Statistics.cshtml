@@ -18,7 +18,6 @@
     var rateJson = jss.Serialize(ViewData["RateData"]);
 }
 
-<p id="demo"></p>
 
 <p id="barTitle"></p>
 <svg class="barChart"></svg>
@@ -30,7 +29,6 @@
 
 
     var Bardata =  @Html.Raw(Json.Encode(ViewData["RateData"]));
-    document.getElementById("demo").innerText = Bardata;
     document.getElementById("barTitle").innerText = "The number of post according to the rate!!";
 
 

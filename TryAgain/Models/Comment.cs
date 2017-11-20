@@ -59,4 +59,11 @@ namespace TryAgain.Models
         public virtual User commentUser { get; set; }
 
     }
+
+    public class searchComment
+    {
+        public string commentor;
+        public string Text;
+        public DateTime date;
+    }
 }

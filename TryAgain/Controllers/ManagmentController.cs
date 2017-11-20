@@ -19,9 +19,19 @@ namespace TryAgain.Controllers
         // GET: Managment
         public ActionResult Index()
         {
+            List<Post> lstpo  = db._posts.ToList();
 
             // TODO: getting the data fo the current user
-            List<Post> lstpo = db._posts.ToList();
+            // if 
+            if (ViewModelBase.logedonUser == null)
+            {
+                lstpo = db.popularPosts();
+            }
+            else
+            {
+                lstpo = db.recommendedPosts(ViewModelBase.logedonUser.Email);
+            }
+
 
             return View(lstpo);
         }

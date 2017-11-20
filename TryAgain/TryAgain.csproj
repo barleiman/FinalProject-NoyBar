@@ -174,13 +174,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711191834097_trymig.cs" />
-    <Compile Include="Migrations\201711191834097_trymig.Designer.cs">
-      <DependentUpon>201711191834097_trymig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711191850215_mig33.cs" />
-    <Compile Include="Migrations\201711191850215_mig33.Designer.cs">
-      <DependentUpon>201711191850215_mig33.cs</DependentUpon>
+    <Compile Include="Migrations\201711192241474_finalemig.cs" />
+    <Compile Include="Migrations\201711192241474_finalemig.Designer.cs">
+      <DependentUpon>201711192241474_finalemig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -281,6 +277,8 @@
     <Content Include="Views\Home\Logoff.cshtml" />
     <Content Include="Views\Home\SearchPost.cshtml" />
     <Content Include="Views\Home\SearchComment.cshtml" />
+    <Content Include="Views\Shared\_PartialSearchPost.cshtml" />
+    <Content Include="Views\Shared\_PartialSearchComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -306,11 +304,8 @@
     <WCFMetadataStorage Include="Connected Services\SunsetWebService\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711191834097_trymig.resx">
-      <DependentUpon>201711191834097_trymig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711191850215_mig33.resx">
-      <DependentUpon>201711191850215_mig33.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711192241474_finalemig.resx">
+      <DependentUpon>201711192241474_finalemig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
